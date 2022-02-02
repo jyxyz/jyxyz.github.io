@@ -1,0 +1,184 @@
+/*****************************************鼠标*****************************************/
+/* 全局默认鼠标指针 */
+body,
+html{
+  cursor: url('/img/cursor/default.cur'),auto !important;
+}
+/* 悬停图片时的鼠标指针 */
+img{
+  cursor: url('/img/cursor/pointer.cur'),auto !important;
+}
+/* 选择链接标签时的鼠标指针 */
+a:hover{
+    cursor: url('/img/cursor/pointer.cur'),auto;
+}
+/* 选中输入框时的鼠标指针 */
+input:hover{
+    cursor: url('/img/cursor/default.cur'),auto;
+}
+/* 悬停按钮时的鼠标指针 */
+button:hover{
+    cursor: url('/img/cursor/pointer.cur'),auto;
+}
+/* 悬停列表标签时的鼠标指针 */
+i:hover{
+    cursor: url('/img/cursor/pointer.cur'),auto;
+}
+/* 悬停页脚链接标签（例如页脚徽标）时的鼠标指针 */
+#footer-wrap a:hover{
+      cursor: url('/img/cursor/pointer.cur'),auto;
+}
+/* 悬停页码时的鼠标指针 */
+#pagination .page-number:hover{
+      cursor: url('/img/cursor/pointer.cur'),auto;
+}
+/* 悬停菜单栏时的鼠标指针 */
+#nav .site-page:hover{
+      cursor: url('/img/cursor/pointer.cur'),auto;
+}
+
+/*****************************************圆角*****************************************/
+/* 修改图片圆角 */
+img[src*="#img-radius"] {
+    border-radius: 9px;
+}
+/* 侧边栏圆角 */
+#aside-content .card-widget {
+border-radius: 18px;
+}
+/* 文章页圆角 */
+.layout>div:first-child:not(.recent-posts) {
+border-radius: 18px;
+}
+/* 双栏卡片圆角 */
+#recent-posts>.recent-post-item {
+border-radius: 18px;
+}
+/* github按钮圆角 */
+#card-info-btn{
+  border-radius: 25px;
+  overflow: hidden}
+#card-info-btn:before{
+  border-radius: 18px
+}
+/* 右侧小按钮圆角 */
+#rightside>div>button,#to_comment {
+  margin-right: 4px;
+  border-radius: 5px;
+}
+/* 翻页圆角 */
+#pagination a.extend,
+#pagination .page-number,
+#pagination span {
+	color: var(--font-color);
+	background-color: var(--card-bg);
+	border-radius: 8px;
+	height: 1.6rem;
+	text-align: center;
+	line-height: 1.6rem;
+	display: inline-block;
+	min-width: 1.6rem;
+}
+/* 目录圆角 */
+#aside-content #card-toc .toc-content .toc-link.active {
+    border-radius: 8px;
+}
+
+
+/* 文章标题居中 */
+#page h1.page-title,#post>#post-info {
+    text-align: center
+}
+
+/* 导航栏置顶透明覆盖 */
+#page-header.not-top-img #nav {
+    background: rgba(255,255,255,0);
+    -webkit-box-shadow: 0 5px 6px -5px rgba(133,133,133,0);
+    box-shadow: 0 5px 6px -5px rgba(133,133,133,0)
+}
+/* 导航栏非置顶透明覆盖 */
+#page-header.nav-fixed #nav {
+ background: rgba(255,255,255,.8);
+    -webkit-box-shadow: 0 5px 6px -5px rgba(133,133,133,.6);
+    box-shadow: 0 5px 6px -5px rgba(133,133,133,.6);
+}
+
+/*字体*/
+@font-face{
+    font-family:'aqqxs' ;  /* 字体名自定义即可 */
+    src:url('/fonts/ZhuZiAWan.woff2'); /* 字体文件路径 */
+    font-display : swap;
+  }
+  
+  a.article-title {
+    font-family: 'aqqxs', sans-serif;
+  }
+  .content {
+    font-family: 'aqqxs', sans-serif;
+  }
+  .article-meta-wrap {
+    font-family: 'aqqxs', sans-serif;
+  }
+  div#bbtalk {
+    font-family: 'aqqxs', sans-serif;
+  }
+  a#site-name {
+    font-family: 'aqqxs', sans-serif;
+  }
+  .card-info-avatar.is-center {
+    font-family: 'aqqxs', sans-serif;
+  }
+  p {
+    font-family: 'aqqxs', sans-serif;
+  }
+  .card-widget.card-tags {
+    font-family: 'aqqxs', sans-serif;
+  }
+  .card-widget.card-webinfo {
+    font-family: 'aqqxs', sans-serif;
+  }
+  element.style {
+    font-family: 'aqqxs', sans-serif;
+  }
+  .aplayer-music {
+    font-family: 'aqqxs', sans-serif;
+  }
+  div#hopelight_plus_menu {
+    font-family: 'aqqxs', sans-serif;
+  }
+  div#menus {
+    font-family: 'aqqxs', sans-serif;
+  }
+  div#local-search-title {
+    font-family: 'aqqxs', sans-serif;
+  }
+  input.local-search-box--input {
+    font-family: 'aqqxs', sans-serif;
+  }
+  div#post-info {
+    font-family: 'aqqxs', sans-serif;
+  }
+  .post-copyright {
+    font-family: 'aqqxs', sans-serif;
+  }
+  .sticky_layout {
+    font-family: 'aqqxs', sans-serif;
+  }
+  .search-dialog {
+    font-family: 'aqqxs', sans-serif;
+  }
+  main#content-inner {
+    font-family: 'aqqxs', sans-serif;
+  }
+  p {
+    font-family: 'aqqxs', sans-serif !important;
+  }
+  #footer-wrap {
+    font-family: 'aqqxs', sans-serif;    /* 手机侧边栏 */
+  }
+  #sidebar #sidebar-menus.open {
+    font-family: 'aqqxs', sans-serif;    /* 页脚 */
+  }
+  #search-button{
+        font-family: 'aqqxs', sans-serif; /* 搜索 */
+  }

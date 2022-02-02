@@ -1,0 +1,905 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>《windows程序设计5th（珍藏版）》-前四章笔记-小甲鱼 | 一杯热牛奶</title><meta name="keywords" content="WIN32 API"><meta name="author" content="阿耶"><meta name="copyright" content="阿耶"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="《windows程序设计5th》（珍藏版）+小甲鱼视频的笔记。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《windows程序设计5th（珍藏版）》-前四章笔记-小甲鱼">
+<meta property="og:url" content="https://jyxyz.github.io/posts/6a024e36.html">
+<meta property="og:site_name" content="一杯热牛奶">
+<meta property="og:description" content="《windows程序设计5th》（珍藏版）+小甲鱼视频的笔记。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jyxyz.github.io/img/default.jpg">
+<meta property="article:published_time" content="2021-07-30T03:21:27.000Z">
+<meta property="article:modified_time" content="2021-09-15T06:24:16.000Z">
+<meta property="article:author" content="阿耶">
+<meta property="article:tag" content="WIN32 API">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jyxyz.github.io/img/default.jpg"><link rel="shortcut icon" href="/img/portrait.png"><link rel="canonical" href="https://jyxyz.github.io/posts/6a024e36"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":270},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":200,"languages":{"author":"作者: 阿耶","link":"链接: ","source":"来源: 一杯热牛奶","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#BEE5D3","bgDark":"#BEE5D3","position":"bottom-right"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '《windows程序设计5th（珍藏版）》-前四章笔记-小甲鱼',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-09-15 14:24:16'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/copyright.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/heoMainColor.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/poem.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.0.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/portrait.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">22</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">一杯热牛奶</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">《windows程序设计5th（珍藏版）》-前四章笔记-小甲鱼</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-07-30T03:21:27.000Z" title="发表于 2021-07-30 11:21:27">2021-07-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-09-15T06:24:16.000Z" title="更新于 2021-09-15 14:24:16">2021-09-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Windows%E5%AE%89%E5%85%A8/">Windows安全</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Windows%E5%AE%89%E5%85%A8/%E7%BC%96%E7%A8%8B%E7%AF%87/">编程篇</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Windows%E5%AE%89%E5%85%A8/%E7%BC%96%E7%A8%8B%E7%AF%87/win-api/">win api</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">8.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>30分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="《windows程序设计5th（珍藏版）》-前四章笔记-小甲鱼"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/posts/6a024e36.html#post-comment"><span id="twikoo-count"></span></a></span></div></div></div><article class="post-content" id="article-container"><p>[toc]</p>
+<h1>扫盲</h1>
+<h2 id="匈牙利标记法">匈牙利标记法</h2>
+<p>​	许多Windows程序员使用“匈牙利标记法”作为变量命名约定，为了纪念具有传奇色彩的微软程序员Charles Simonyi</p>
+<p>意义：</p>
+<ul>
+<li>帮助程序写作者及早发现并避免程序中的错误。由于变量名既描述了变量的作用，又描述了其数据型态，就比较容易避免产生数据型态不合的错误。</li>
+</ul>
+<p>“匈牙利标记法”：</p>
+<ul>
+<li>
+<p>变量名以<strong>表明该变量数据类型的小写字母</strong>开头</p>
+<blockquote>
+<p>例如</p>
+<p>WinMain函数的四个参数中：</p>
+<p>在 hInstance 和 hPrevInstance 中的 h 前缀表示“句柄（Handle）”；</p>
+<p>szCmdLine 中的 sz 代表“以0结尾的字符串（StringZero）”；</p>
+<p>在 iCmdShow 中的 i 前缀表示“整型（Integer）”</p>
+</blockquote>
+</li>
+<li>
+<p>命名结构变量时，使用<strong>结构名（或结构名称的缩写）的小写形式</strong>作为变量名称的前缀或整个变量名</p>
+<blockquote>
+<p>例如</p>
+<p>msg 变量是 MSG 型态的结构；</p>
+<p>wndclass 是 WNDCLASSEX 型态的一个结构；</p>
+<p>ps 是一个 PAINTSTRUCT 结构</p>
+<p>rect 是一个 RECT 结构。</p>
+</blockquote>
+</li>
+<li>
+<p>常量和宏定义全部以大写字母进行撰写，中间可根据意义的连续性用下划线连接，前缀表明<strong>该常量所属的一般类别</strong></p>
+<blockquote>
+<p>例如</p>
+<p>CS_HREDRAW      DT_VCENTER        SND_FILENAME<br>
+CS_VREDRAW       IDC_ARROW        WM_CREATE<br>
+CW_USEDEFAULT   IDI_APPLICATION   WM_DESTROY<br>
+DT_CENTER         MB_ICONERROR    WM_PAINT<br>
+DT_SINGLELINE     SND_ASYNC         WS_OVERLAPPEDWINDOW</p>
+</blockquote>
+</li>
+</ul>
+<p>变量名前缀：</p>
+<table>
+<thead>
+<tr>
+<th><strong>前缀</strong></th>
+<th><strong>数据类型</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>c</td>
+<td>char 或 WCHAR 或 TCHAR</td>
+</tr>
+<tr>
+<td>by</td>
+<td>BYTE （无符号字符）</td>
+</tr>
+<tr>
+<td>n</td>
+<td>short（短整型）</td>
+</tr>
+<tr>
+<td>i</td>
+<td>int（整型）</td>
+</tr>
+<tr>
+<td>x, y</td>
+<td>int，表示 x 坐标和 y 坐标</td>
+</tr>
+<tr>
+<td>cx, cy</td>
+<td>int，表示 x 或 y 的长度，c 表示“count”（计数）</td>
+</tr>
+<tr>
+<td>B 或 f</td>
+<td>BOOL（int）；f 表示“flag”</td>
+</tr>
+<tr>
+<td>w</td>
+<td>WORD（无符号短整型）</td>
+</tr>
+<tr>
+<td>l</td>
+<td>LONG（长整型）</td>
+</tr>
+<tr>
+<td>dw</td>
+<td>DWORD（无符号长整型）</td>
+</tr>
+<tr>
+<td>fn</td>
+<td>函数</td>
+</tr>
+<tr>
+<td>s</td>
+<td>字符串</td>
+</tr>
+<tr>
+<td>sz</td>
+<td>以零结束的字符串（String Terminated with a Zero)</td>
+</tr>
+<tr>
+<td>h</td>
+<td>句柄</td>
+</tr>
+<tr>
+<td>p</td>
+<td>指针</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>前缀lpfn：指向函数的长指针（long pointer to a function)</li>
+<li>lpsz：指向以零结束的字符串的长指针（long pointer to a string terminated with a zero）</li>
+<li>前缀cb：字节数（count of byte)</li>
+<li>h句柄
+<ul>
+<li>hbr：画刷的句柄（handle to a brush）</li>
+</ul>
+</li>
+</ul>
+<p>大写前缀：</p>
+<table>
+<thead>
+<tr>
+<th><strong>前缀</strong></th>
+<th><strong>含义</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CS</td>
+<td>类风格选项（ClassStyle）</td>
+</tr>
+<tr>
+<td>CW</td>
+<td>创建窗口选项（CreateWindow）</td>
+</tr>
+<tr>
+<td>DT</td>
+<td>文本绘制选项（DrawText）</td>
+</tr>
+<tr>
+<td>IDI</td>
+<td>图标的 ID 号（IDIcon）（ID for a icon）</td>
+</tr>
+<tr>
+<td>IDC</td>
+<td>光标的 ID 号（IDCursor）</td>
+</tr>
+<tr>
+<td>MB</td>
+<td>消息框选项（MessageBox）</td>
+</tr>
+<tr>
+<td>SND</td>
+<td>声音选项（Sound）</td>
+</tr>
+<tr>
+<td>WM</td>
+<td>窗口消息（WindowsMessage）</td>
+</tr>
+<tr>
+<td>WS</td>
+<td>窗口风格（WindowStyles）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>MORE:</p>
+<p>​	<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8C%88%E7%89%99%E5%88%A9%E6%A0%87%E8%AE%B0%E6%B3%95/3640316?fr=aladdin">匈牙利标记法-百度百科</a></p>
+<p>​	<a target="_blank" rel="noopener" href="https://blog.csdn.net/jlran/article/details/52700095">匈牙利标记法</a></p>
+</blockquote>
+<h2 id="句柄">句柄</h2>
+<p>​	数值上是一个32位无符号整型值（32位系统下）；逻辑上，相当于指针的指针；形象理解上，是Windows中各个对象的一个唯一的、固定不变的ID；作用上，Windows使用句柄来标识诸如窗口、位图、画笔等对象，并通过句柄找到这些对象。</p>
+<blockquote>
+<p>​	因为Windows的虚拟内存管理机制，内存管理器经常地在内存中移动各种对象，以此来满足各种应用程序的内存需要，对象被移动了，即在内存中的位置会经常变化的，那如何找到这个在内存中不固定的对象？<br>
+​	为了解决这个问题，Windows操作系统为各应用程序腾出一些内存储地址，用来专门登记各应用对象在内存中的地址变化，而这个地址(内存管理器在移动对象在内存中的位置后，把对象新的地址告知这个句柄地址来保存。这样我们只需记住这个句柄地址就可以间接地知道对象具体在内存中的哪个位置。这个地址是在对象装载(Load)时由系统分配给的，当系统卸载时(Unload)又释放给系统。</p>
+<p>​	句柄类似索引表中的索引号</p>
+<p>​	句柄地址(稳定)→记载着对象在内存中的地址————→对象在内存中的地址(不稳定)→实际对象</p>
+</blockquote>
+<p>​	句柄事实上是一个数，一个索引值，一个让操作系统可以找到这个实例的索引值。事实上系统内部有建立一个索引表，维护着所有实例的索引号对应的内存地址，但这个索引表操作系统是不可能告诉我们的。</p>
+<img src= "/img/loading.gif" data-lazy-src="/Typora_images/《windows程序设计》-前四章笔记-小甲鱼/161823248912685.png" alt="img"  />
+<p><img src= "/img/loading.gif" data-lazy-src="/Typora_images/%E3%80%8Awindows%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B-%E5%89%8D%E5%9B%9B%E7%AB%A0%E7%AC%94%E8%AE%B0-%E5%B0%8F%E7%94%B2%E9%B1%BC/161823541109391.png" alt="img"></p>
+<p><strong>handle，知道怎么用更重要！</strong></p>
+<blockquote>
+<p>参考网址：</p>
+<p>​	<a target="_blank" rel="noopener" href="https://fishc.com.cn/forum.php?mod=viewthread&amp;tid=47365">第004讲：【扫盲】句柄与指针（转）-鱼C论坛</a></p>
+<p>比喻角度理解：</p>
+<p>​	<a target="_blank" rel="noopener" href="https://www.cnblogs.com/zpcdbky/p/4652151.html">图解说明——究竟什么是Windows句柄</a></p>
+<p>代码角度理解：</p>
+<p>​	<a target="_blank" rel="noopener" href="https://blog.csdn.net/wenzhou1219/article/details/17659485">深入了解Windows句柄到底是什么</a></p>
+<p>​	<a target="_blank" rel="noopener" href="https://blog.csdn.net/newjerryj/article/details/4383701">句柄和指针的区别</a></p>
+<p>​	<a target="_blank" rel="noopener" href="https://www.cnblogs.com/yellowyu/archive/2009/06/07/1497910.html">关于什么是句柄(经典)</a></p>
+<p>其他：</p>
+<p>​	<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8F%A5%E6%9F%84/3527587?fr=aladdin">句柄-百度百科</a></p>
+<p>​	<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/27656256">句柄是什么</a></p>
+</blockquote>
+<h2 id="客户区和非客户区">客户区和非客户区</h2>
+<img src= "/img/loading.gif" data-lazy-src="/Typora_images/《windows程序设计》-前四章笔记-小甲鱼/image-20210801202843768.png" alt="image-20210801202843768" style="zoom: 67%;" />
+<p>​	如何自绘窗口：创建一个无边框无标题栏的窗口，相当于去除了窗口的非客户区，然后我们在客户区里自己进行绘制，这样想把窗口画成什么样都行。这是基本的思路，但实现起来还是有很多难点需要克服。</p>
+<h1>窗口与消息</h1>
+<h2 id="Windows窗口诞生过程">Windows窗口诞生过程</h2>
+<p>​	定义窗口类结构（<a target="_blank" rel="noopener" href="http://bbs.fishc.com/thread-47123-1-1.html">WNDCLASS</a>） -&gt; 注册窗口类（RegisterClass） -&gt; 创建窗口（<a target="_blank" rel="noopener" href="http://bbs.fishc.com/thread-47139-1-1.html">CreateWindow</a>） -&gt; 显示窗口（<a target="_blank" rel="noopener" href="http://bbs.fishc.com/thread-47206-1-1.html">ShowWindow</a>） -&gt; 更新窗口（<a target="_blank" rel="noopener" href="http://bbs.fishc.com/thread-47210-1-1.html">UpdateWindow</a>） -&gt; 消息循环（<a target="_blank" rel="noopener" href="http://bbs.fishc.com/thread-47252-1-1.html">GetMessage</a> -&gt; <a target="_blank" rel="noopener" href="http://bbs.fishc.com/thread-47258-1-1.html">TranslateMessage</a> -&gt;<a target="_blank" rel="noopener" href="http://bbs.fishc.com/thread-47260-1-1.html">DispatchMessage</a>）</p>
+<p>​	备注：在调用完 CreateWindow 函数之后，应用程序实例已经在内存中创建成功，并返回窗口句柄。</p>
+<h2 id="系统如何销毁一个窗口">系统如何销毁一个窗口</h2>
+<p><img src= "/img/loading.gif" data-lazy-src="/Typora_images/%E3%80%8Awindows%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B-%E5%89%8D%E5%9B%9B%E7%AB%A0%E7%AC%94%E8%AE%B0-%E5%B0%8F%E7%94%B2%E9%B1%BC/2126419gzgt9d5rayedvrv.png" alt="img"></p>
+<p>​	问：如果在程序关闭的时候需要提示用户是否真的关闭应用程序，我们应该响应哪个消息呢？</p>
+<p>​	答：WM_CLOSE消息</p>
+<p>​	如：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> WM_CLOSE:</span><br><span class="line">  <span class="keyword">if</span>(MessaBox(hwnd, TEXT(<span class="string">&quot;请问是否真的要关闭我？&quot;</span>), TEXT(<span class="string">&quot;请确认&quot;</span>), MB_YESNO)==IDYES)</span><br><span class="line">       DestroyWindow(hwnd);</span><br><span class="line">     <span class="keyword">else</span></span><br><span class="line">       <span class="keyword">return</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="经典模板代码">经典模板代码</h2>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="function">LRESULT CALLBACK <span class="title">WndProc</span> <span class="params">(HWND, UINT, WPARAM, LPARAM)</span> </span>;</span><br><span class="line">                        <span class="comment">//函数参数声明了类型，没指出形参而已</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> WINAPI <span class="title">WinMain</span> <span class="params">(HINSTANCE hInstance, HINSTANCE hPrevInstance,</span></span></span><br><span class="line"><span class="params"><span class="function">                    PSTR szCmdLine, <span class="keyword">int</span> iCmdShow)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">     <span class="keyword">static</span> TCHAR szAppName[] = TEXT (<span class="string">&quot;HelloWin&quot;</span>) ;</span><br><span class="line">     HWND         hwnd ;    <span class="comment">//窗口句柄</span></span><br><span class="line">     MSG          msg ;     <span class="comment">//消息结构</span></span><br><span class="line">     WNDCLASS     wndclass ;<span class="comment">//窗口类结构</span></span><br><span class="line"><span class="comment">/*------------------------------------------------------------</span></span><br><span class="line"><span class="comment">   定义窗口类结构（WNDCLASS）</span></span><br><span class="line"><span class="comment">  ------------------------------------------------------------*/</span></span><br><span class="line">     wndclass.style         = CS_HREDRAW | CS_VREDRAW ;                 <span class="comment">//指定窗口类型，各种“类风格”，可以使用按位或操作符组合起来</span></span><br><span class="line">     wndclass.lpfnWndProc   = WndProc ;                                 <span class="comment">//指定窗口过程（必须是回调函数）</span></span><br><span class="line">     wndclass.cbClsExtra    = <span class="number">0</span> ;                                       <span class="comment">//预留的额外空间，一般为 0</span></span><br><span class="line">     wndclass.cbWndExtra    = <span class="number">0</span> ;                                       <span class="comment">//预留的额外空间，一般为 0</span></span><br><span class="line">     wndclass.hInstance     = hInstance ;                               <span class="comment">//应用程序的实例句柄</span></span><br><span class="line">     wndclass.hIcon         = LoadIcon (<span class="literal">NULL</span>, IDI_APPLICATION) ;        <span class="comment">//为所有基于该窗口类的窗口设定一个图标</span></span><br><span class="line">     wndclass.hCursor       = LoadCursor (<span class="literal">NULL</span>, IDC_ARROW) ;            <span class="comment">//为所有基于该窗口类的窗口设定一个鼠标指针</span></span><br><span class="line">     wndclass.hbrBackground = (HBRUSH) GetStockObject (WHITE_BRUSH) ;   <span class="comment">//指定窗口背景色</span></span><br><span class="line">     wndclass.lpszMenuName  = <span class="literal">NULL</span> ;                                    <span class="comment">//指定窗口菜单</span></span><br><span class="line">     wndclass.lpszClassName = szAppName ;                               <span class="comment">//指定窗口类名</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*------------------------------------------------------------</span></span><br><span class="line"><span class="comment">   注册窗口类（RegisterClass）</span></span><br><span class="line"><span class="comment">  ------------------------------------------------------------*/</span></span><br><span class="line">     <span class="keyword">if</span> (!RegisterClass (&amp;wndclass))</span><br><span class="line">     &#123;</span><br><span class="line">          MessageBox (<span class="literal">NULL</span>, TEXT (<span class="string">&quot;This program requires Windows NT!&quot;</span>), </span><br><span class="line">                      szAppName, MB_ICONERROR) ;                        <span class="comment">//注册失败则弹窗提示ERROR</span></span><br><span class="line">          <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">     &#125;</span><br><span class="line">     </span><br><span class="line"><span class="comment">/*------------------------------------------------------------</span></span><br><span class="line"><span class="comment">   创建窗口（CreateWindow)</span></span><br><span class="line"><span class="comment">  ------------------------------------------------------------*/</span></span><br><span class="line">     hwnd = CreateWindow (szAppName,                  <span class="comment">// 窗口类名称</span></span><br><span class="line">                          TEXT (<span class="string">&quot;The Hello Program&quot;</span>), <span class="comment">// 窗口标题</span></span><br><span class="line">                          WS_OVERLAPPEDWINDOW,        <span class="comment">// 窗口风格，或称窗口格式</span></span><br><span class="line">                          CW_USEDEFAULT,              <span class="comment">// 初始x坐标</span></span><br><span class="line">                          CW_USEDEFAULT,              <span class="comment">// 初始y坐标</span></span><br><span class="line">                          CW_USEDEFAULT,              <span class="comment">// 初始x方向尺寸</span></span><br><span class="line">                          CW_USEDEFAULT,              <span class="comment">// 初始y方向尺寸</span></span><br><span class="line">                          <span class="literal">NULL</span>,                       <span class="comment">// 父窗口句柄</span></span><br><span class="line">                          <span class="literal">NULL</span>,                       <span class="comment">// 窗口菜单句柄</span></span><br><span class="line">                          hInstance,                  <span class="comment">// 程序实例句柄</span></span><br><span class="line">                          <span class="literal">NULL</span>) ;                     <span class="comment">// 创建参数</span></span><br><span class="line">     </span><br><span class="line"><span class="comment">/*------------------------------------------------------------</span></span><br><span class="line"><span class="comment">   显示窗口（ShowWindow）-&gt;更新窗口（UpdateWindow）</span></span><br><span class="line"><span class="comment">  ------------------------------------------------------------*/</span></span><br><span class="line">     ShowWindow (hwnd, iCmdShow) ;</span><br><span class="line">     UpdateWindow (hwnd) ;</span><br><span class="line">     </span><br><span class="line"><span class="comment">/*------------------------------------------------------------</span></span><br><span class="line"><span class="comment">   消息循环（GetMessage-&gt;TranslateMessage-&gt;DispatchMessage)</span></span><br><span class="line"><span class="comment">  ------------------------------------------------------------*/</span></span><br><span class="line"></span><br><span class="line">     <span class="keyword">while</span> (GetMessage (&amp;msg, <span class="literal">NULL</span>, <span class="number">0</span>, <span class="number">0</span>))</span><br><span class="line">     &#123;</span><br><span class="line">          TranslateMessage (&amp;msg) ;</span><br><span class="line">          DispatchMessage (&amp;msg) ;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     <span class="keyword">return</span> msg.wParam ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*------------------------------------------------------------</span></span><br><span class="line"><span class="comment">   窗口过程</span></span><br><span class="line"><span class="comment">  ------------------------------------------------------------*/</span></span><br><span class="line"><span class="function">LRESULT CALLBACK <span class="title">WndProc</span> <span class="params">(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)</span></span></span><br><span class="line"><span class="function"></span>&#123;                           <span class="comment">//WndProc这四个函数参数是MSG消息结构中的前四位成员</span></span><br><span class="line">     HDC         hdc ;      <span class="comment">//设备环境句柄</span></span><br><span class="line">     PAINTSTRUCT ps ;       <span class="comment">//绘制结构</span></span><br><span class="line">     RECT        rect ;     <span class="comment">//矩阵结构</span></span><br><span class="line">     </span><br><span class="line">     <span class="keyword">switch</span> (message)</span><br><span class="line">     &#123;</span><br><span class="line">     <span class="keyword">case</span> WM_CREATE:</span><br><span class="line">          PlaySound (TEXT (<span class="string">&quot;hellowin.wav&quot;</span>), <span class="literal">NULL</span>, SND_FILENAME | SND_ASYNC) ;</span><br><span class="line">          <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">          </span><br><span class="line">     <span class="keyword">case</span> WM_PAINT:</span><br><span class="line">          hdc = BeginPaint (hwnd, &amp;ps) ;</span><br><span class="line">          </span><br><span class="line">          GetClientRect (hwnd, &amp;rect) ;</span><br><span class="line">          </span><br><span class="line">          DrawText (hdc, TEXT (<span class="string">&quot;Hello, Windows 98!&quot;</span>), <span class="number">-1</span>, &amp;rect,</span><br><span class="line">                    DT_SINGLELINE | DT_CENTER | DT_VCENTER) ;</span><br><span class="line">          </span><br><span class="line">          EndPaint (hwnd, &amp;ps) ;</span><br><span class="line">          <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">          </span><br><span class="line">     <span class="keyword">case</span> WM_DESTROY:</span><br><span class="line">          PostQuitMessage (<span class="number">0</span>) ;</span><br><span class="line">          <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     <span class="keyword">return</span> DefWindowProc (hwnd, message, wParam, lParam) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="消息">消息</h3>
+<p>消息，说到底它就是一个整数值，一个 Windows 约定俗成的整数值，通过查找相关的宏定义（<a target="_blank" rel="noopener" href="http://bbs.fishc.com/thread-47244-1-1.html">Windows 常用消息及含义</a>），使得我们了解这些整数值分别代表什么含义。</p>
+<h4 id="消息机制-2">消息机制</h4>
+<p>Windows 是一个事件驱动，基于消息的操作系统。</p>
+<p>用户的任何操作都被看作一个事件，操作系统会自动将该事件转换为相应的消息并投入该应用程序的消息队列等待处理</p>
+<img src= "/img/loading.gif" data-lazy-src="/Typora_images/《windows程序设计》-前四章笔记-小甲鱼/171005auhg2n8gpc76xgwu.jpg" alt="img" style="zoom:80%;" />
+<p>消息队列分为</p>
+<p>队列消息</p>
+<ul>
+<li>
+<p>队列消息是指那些由 Windows 放入消息队列的消息，主要由用户的输入产生，例如按键点击、鼠标移动、窗口重绘、还有定时器消息等。这些消息都是要经过消息循环，通过 GetMessage 检索消息，到 DisapatchMessage 将消息投递到窗口过程中处理。</p>
+</li>
+<li>
+<p>FIFO的形式，先进先处理</p>
+</li>
+<li>
+<p>WM_PAINT，WM_TIMER 和 WM_QUIT 这三个消息属于特例，操作系统会把它们时刻放在消息队列的最后，只有当消息队列里的其他消息都执行完了才会去执行它们。</p>
+</li>
+</ul>
+<p>非队列消息</p>
+<ul>
+<li>
+<p>队列消息以外的其他所有消息我们称之为非队列消息，他们通常是由调用特定的 Windows 函数引起的。</p>
+</li>
+<li>
+<p>非队列化消息会<strong>被直接发到</strong>窗口过程(不用排队)，也就是绕过了系统的消息队列和线程的消息队列。</p>
+</li>
+</ul>
+<blockquote>
+<p>例如，当调用CreateWindow时，操作系统将建立窗口并给窗口过程发送一个WM_CREATE的消息。当调用ShowWindow时，操作系统给窗口过程发送WM_SIZE和WM_SHOWWINDOW消息。而当调用UpdateWindow时，操作系统给窗口过程发送WM_PAINT消息。注意，这些消息都是绕过消息队列直接发给窗口过程的。</p>
+</blockquote>
+<h4 id="消息循环">消息循环</h4>
+<p><img src= "/img/loading.gif" data-lazy-src="/Typora_images/%E3%80%8Awindows%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B-%E5%89%8D%E5%9B%9B%E7%AB%A0%E7%AC%94%E8%AE%B0-%E5%B0%8F%E7%94%B2%E9%B1%BC/1720273xgxrdg8gygdltm8.jpg" alt="img"></p>
+<p>应用程序的消息机制主要由消息循环来处理：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (GetMessage(&amp;msg, <span class="literal">NULL</span>, <span class="number">0</span>, <span class="number">0</span>))</span><br><span class="line">&#123;</span><br><span class="line">        TranslateMessage(&amp;msg);</span><br><span class="line">        DispatchMessage(&amp;msg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>GetMessage 函数从应用程序的队列里取出一个消息,</p>
+<ul>
+<li>如果这个消息是 WM_QUIT（程序退出消息）就返回 0，结束 while 循环。（应用程序被关闭的时候，系统会发送一条 WM_QUIT 消息给消息队列。）</li>
+<li>如果不是退出消息，那么就执行 TranslateMessage 翻译消息，这个操作主要是对一些消息进行转换，例如把键盘的虚拟键消息转换为字符消息</li>
+</ul>
+<p>接着调用 DispatchMessage 将消息分派给相应的窗口过程。</p>
+<blockquote>
+<p>注意：他不是直接通过 DispatchMessage 调用我们的窗口过程 WndProc，这里其实 DispatchMessage 是带着消息<strong>去找操作系统，然后再由操作系统带着MSG结构前四个成员值作为参数去调用</strong> WndProc 窗口过程。（因此才叫 CALLBACK 回调）</p>
+<p>看起来有点纠结哈，不过这就是消息机制的一个真实面目，操作系统为了绝对的控制权，时时刻刻都监控着应用程序的运行。</p>
+</blockquote>
+<h3 id="窗口过程-2">窗口过程</h3>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">LRESULT CALLBACK <span class="title">WndProc</span> <span class="params">(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)</span></span></span><br><span class="line"><span class="function"></span>&#123;                           <span class="comment">//WndProc这四个函数参数是msg结构变量中的前四位成员</span></span><br><span class="line">     HDC         hdc ;      <span class="comment">//设备环境句柄</span></span><br><span class="line">     PAINTSTRUCT ps ;       <span class="comment">//绘制结构</span></span><br><span class="line">     RECT        rect ;     <span class="comment">//矩阵结构</span></span><br><span class="line">     </span><br><span class="line">     <span class="keyword">switch</span> (message)</span><br><span class="line">     &#123;</span><br><span class="line">     <span class="keyword">case</span> WM_CREATE:</span><br><span class="line">          PlaySound (TEXT (<span class="string">&quot;hellowin.wav&quot;</span>), <span class="literal">NULL</span>, SND_FILENAME | SND_ASYNC) ;</span><br><span class="line">          <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">          </span><br><span class="line">     <span class="keyword">case</span> WM_PAINT:</span><br><span class="line">          hdc = BeginPaint (hwnd, &amp;ps) ;</span><br><span class="line">          </span><br><span class="line">          GetClientRect (hwnd, &amp;rect) ;</span><br><span class="line">          </span><br><span class="line">          DrawText (hdc, TEXT (<span class="string">&quot;Hello, Windows 98!&quot;</span>), <span class="number">-1</span>, &amp;rect,</span><br><span class="line">                    DT_SINGLELINE | DT_CENTER | DT_VCENTER) ;</span><br><span class="line">          </span><br><span class="line">          EndPaint (hwnd, &amp;ps) ;</span><br><span class="line">          <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">          </span><br><span class="line">     <span class="keyword">case</span> WM_DESTROY:</span><br><span class="line">          PostQuitMessage (<span class="number">0</span>) ;</span><br><span class="line">          <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     <span class="keyword">return</span> DefWindowProc (hwnd, message, wParam, lParam) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在窗口过程中，我们对感兴趣的消息进行监控并部署相应的代码<code>switch和case语句</code>，对不感兴趣的消息我们都扔给DefWindowProc，让操作系统以默认的方式来处理消息。</p>
+<p>窗口过程对客户区和非客户区产生的消息都响应，但一般非客户区产生的消息留给 DefWindowProc 函数来默认处理，窗口过程比较需要关心客户区的绘制。</p>
+<h4 id="调用问题">调用问题</h4>
+<p>Windows 编程中有句名言：**Don’t call me, I will call you.**讲的就是谁调用谁的道理。</p>
+<p>用户对窗口所有的操作都会触发相应的事件，而 Windows 把所有的事件转换为对应的消息，所有对窗口过程的调用都是以消息的形式触发，<em>我们写的大部分代码都是致力于对各种消息的处理和响应</em>。</p>
+<p>消息机制就是 Windows 的核心机制，那消息机制有多重要呢？这么说吧，以前C语言调用我们自己的函数，我们直接通过函数名调用即可，对吧？但是在 Windows 编程的做法可不是这样了。我们要调用自己写的函数，会选择通过发送消息给 Windows，然后由 Windows 再来通过消息间接调用我们的函数。初学 Windows 编程的童鞋可能觉得这样很没效率，但这样做恰恰是为了保证你的程序的高效实现，这就是 Windows 编程的游戏规则！</p>
+<h3 id="其它问题">其它问题</h3>
+<ol>
+<li>
+<p>如果把 ShowWindow 和 UpdateWindow 函数去掉，应用程序可以正常响应消息吗？</p>
+<p>答：可以，因为在调用完 CreateWindow 函数的时候窗口就已经创建出来了，只是存在内存中，还没有生成窗口界面而已。这时候属于该应用程序的消息队列也已经生成，因此应用程序可以正常响应消息。简单的说，这时候应用程序的灵已经存在了</p>
+</li>
+<li>
+<p>请问第一个 WM_PAINT 消息是哪个 ShowWindow 还是 UpdateWindow 函数发送的？</p>
+<p>答：调用 ShowWindow 会把定制好的窗口框架显示出来，此时并不发送 WM_PAINT 消息，是 UpdateWindow 函数发送第一个 WM_PAINT 消息，让窗口过程响应 WM_PAINT 消息来作出具体的绘画部署。</p>
+</li>
+<li>
+<p>如果把 WM_DESTROY 消息处理中的 PostQuitMessage(0) 去掉，应用程序有什么变化？</p>
+<p>答：应用程序不能直接通过“关闭”按钮关闭应用程序，在 WIN8 下的任务管理器会看到我们的应用程序从“应用”转入“后台进程”，明显程序并没有再内存中被销毁，只是界面不见了而已。</p>
+</li>
+<li>
+<p>使用合适的断点调试程序，并填写以下表格：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>调用函数名</strong></td>
+<td><strong>产生的消息</strong></td>
+</tr>
+<tr>
+<td>RegisterClass</td>
+<td></td>
+</tr>
+<tr>
+<td>CreateWindow</td>
+<td></td>
+</tr>
+<tr>
+<td>ShowWindow</td>
+<td></td>
+</tr>
+<tr>
+<td>UpdateWindow</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>答：</p>
+<table>
+<thead>
+<tr>
+<th><strong>调用函数名</strong></th>
+<th><strong>产生的消息</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RegisterClass</td>
+<td>没有消息</td>
+</tr>
+<tr>
+<td>CreateWindow</td>
+<td>WM_GETMINMAXINFO <br />WM_NCCREATE <br />WM_NCCALCSIZE <br />WM_CREATE</td>
+</tr>
+<tr>
+<td>ShowWindow</td>
+<td>WM_SHOWWINDOW <br />WM_WINDOWPOSCHANGING <br />WM_ACTIVATEAPP <br />WM_NCACTIVATE <br />WM_GETICON <br />WM_ACTIVATE <br />WM_IME_SETCONTEXT <br />WM_IME_NOTIFY <br />WM_SETFOCUS <br />WM_NCPAINT <br />WM_ERASEBKGND <br />WM_WINDOWPOSCHANGED <br />WM_SIZE WM_MOVE</td>
+</tr>
+<tr>
+<td>UpdateWindow</td>
+<td>WM_PAINT</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>WinMain 函数的返回值 msg.wParam 是个什么东西？</p>
+<p>答：镜头回到消息循环退出的那一瞬：GetMessage 函数从消息队列里拿到WM_QUIT 消息，返回 0 退出消息循环。此时，msg 变量存放的还是 WM_QUIT 消息，因此 msg.wParam 是WM_QUIT 消息结构的 wParam 成员。对于视频演示中的例子，该值是由此前我们调用 PostQuitMessage 函数所使用的参数决定。</p>
+</li>
+<li>
+<p>窗口过程里边都有返回值，这个返回值是返回到哪里？</p>
+<p>答：Windows 将窗口过程的返回值原封不动作为 DispatchMessage 函数的返回值返回，尽管这个返回值的含义依赖于被响应的消息，但通常被忽略。</p>
+</li>
+<li>
+<p>请自行搜索材料，并总结什么是“抢占式多任务处理”？</p>
+<p>答：抢占式多任务处理（Preemption）是计算机操作系统中，一种实现多任务处理（multi task）的方式，相对于协作式多任务处理而言。协作式环境下，下一个进程被调度的前提是当前进程主动放弃时间片；抢占式环境下，操作系统完全决定进程调度方案，操作系统可以剥夺耗时长的进程的时间片，提供给其它进程。<br>
+Windows NT是抢占式多任务环境，这就意味着当一个程序完成一项非常耗时的工作时，Windows允许用户将控制权切换到其他程序上。<br>
+这本是一件非常棒的设计，但这种抢占式多任务模式未必总是会按照你期望的方式去工作。例如，假如你的程序处理某条特定消息需要花费1~2分钟的时间，的确，在这期间，用户可以切换到其他程序，但是此时用户无法对你的程序做任何操作，这时候用户就会开始抱怨了，马勒戈壁，这程序怎么卡得更妈蛋一样……举个例子：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> WM_LBUTTONUP:</span><br><span class="line">                <span class="keyword">while</span> (<span class="number">1</span>) </span><br><span class="line">                        ;<span class="comment">//处理WM_LBUTTONUP这条消息花费时间太长，就无法响应用户对这个窗口的其他操作，因为要处理完一条消息后才能处理下一条消息</span></span><br><span class="line">                MessageBox(hwnd, TEXT(<span class="string">&quot;哎呀，我丫的被按了一下~&quot;</span>), TEXT(<span class="string">&quot;好舒服~&quot;</span>), MB_OK);</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>这是一个极端的例子，但一定要注意，不要在处理某条消息上耗费太大的时间，这样的用户体验会很差！</p>
+</li>
+</ol>
+<h1>文本输出</h1>
+<h2 id="GDI">GDI</h2>
+<p>​	Windows有三大核心部件，它们分别是内核（kernel）、用户（user）和GDI。</p>
+<p>我们所调用的大部分API函数都是封装在这三个子系统中。</p>
+<ul>
+<li>内核kernel（在16位的KRNL386.exe及32位的KEREL32.DLL中实现）负责操作系统的那些传统工作，包括内存管理、文件输入/输出及任务管理等</li>
+<li>用户user（在16位的GDI.exe及32位的User32.DLL中实现）主要负责所有的窗口管理，也就是用户界面</li>
+<li>GDI（在16位的GDI.exe.及32位的GDI32.DLL中实现）就是图形设备接口，负责在屏幕或打印机上绘制文本和图形。</li>
+</ul>
+<p>​	想要绘制客户区的前提条件是获得设备环境句柄，可以把设备环境句柄认为是应用程序使用GDI函数的“通行证”。有了它，我们才可以随心所欲地绘制你的客户区。</p>
+<h2 id="设备环境-Device-Context">设备环境(Device Context)</h2>
+<p>​	设备环境（Device Context，简称DC）也叫设备上下文或设备描述表，是GDI内部维护的一个数据结构，它与特定的显示设备或打印设备相关联。这个数据结构里边存放在着一些属性，决定着需要打印的文本的颜色、文本的背景色、以及对本对齐的基准点等等。</p>
+<p>​	<strong>程序在处理同一条消息的过程中，获取句柄和释放句柄必须成对使用！</strong></p>
+<h3 id="获得设备环境句柄的两种方式">获得设备环境句柄的两种方式</h3>
+<p>方式一：在处理WM_PAINT消息时使用</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> WM__PAINT:</span><br><span class="line">	hdc=BeginPaint(hwnd, &amp;ps);</span><br><span class="line">	[使用GDI函数]</span><br><span class="line">	EndPaint(hwnd, &amp;ps);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+<p>方法二：适用于任何时候</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hdc=GetDC(hwnd);</span><br><span class="line">[使用GDI函数]</span><br><span class="line">ReleaseDC(hwnd, hdc);</span><br></pre></td></tr></table></figure>
+<h2 id="TextOut及文本相关概念">TextOut及文本相关概念</h2>
+<p>​	TextOut函数是显示文本最重要的GDI函数</p>
+<p>​	DrawText 函数功能虽然强大，但无法指定想要输出的位置。</p>
+<p>而 TextOut 函数可以，TextOut与DrawText相比较起来要简单的多，且可以指定字符串的具体位置。</p>
+<p>例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TextOut(hdc, <span class="number">400</span>, <span class="number">300</span>, TEXT(<span class="string">&quot;I love FishC.com!&quot;</span>), <span class="number">17</span>);</span><br></pre></td></tr></table></figure>
+<p>效果：</p>
+<p>​	<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msqrt><mrow><mi>x</mi><mtext>方向</mtext><mn>30</mn><msup><mn>0</mn><mn>2</mn></msup><mo>+</mo><mi>y</mi><mtext>方向</mtext><mn>40</mn><msup><mn>0</mn><mn>2</mn></msup></mrow></msqrt><mo>=</mo><mtext>斜边</mtext><mn>500</mn></mrow><annotation encoding="application/x-tex">\sqrt{x方向300^2 +y方向400^2}=斜边500</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.24em;vertical-align:-0.2822em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9578em;"><span class="svg-align" style="top:-3.2em;"><span class="pstrut" style="height:3.2em;"></span><span class="mord" style="padding-left:1em;"><span class="mord mathnormal">x</span><span class="mord cjk_fallback">方向</span><span class="mord">30</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mord cjk_fallback">方向</span><span class="mord">40</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span><span style="top:-2.9178em;"><span class="pstrut" style="height:3.2em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.28em;"><svg xmlns="http://www.w3.org/2000/svg" width='400em' height='1.28em' viewBox='0 0 400000 1296' preserveAspectRatio='xMinYMin slice'><path d='M263,681c0.7,0,18,39.7,52,119
+c34,79.3,68.167,158.7,102.5,238c34.3,79.3,51.8,119.3,52.5,120
+c340,-704.7,510.7,-1060.3,512,-1067
+l0 -0
+c4.7,-7.3,11,-11,19,-11
+H40000v40H1012.3
+s-271.3,567,-271.3,567c-38.7,80.7,-84,175,-136,283c-52,108,-89.167,185.3,-111.5,232
+c-22.3,46.7,-33.8,70.3,-34.5,71c-4.7,4.7,-12.3,7,-23,7s-12,-1,-12,-1
+s-109,-253,-109,-253c-72.7,-168,-109.3,-252,-110,-252c-10.7,8,-22,16.7,-34,26
+c-22,17.3,-33.3,26,-34,26s-26,-26,-26,-26s76,-59,76,-59s76,-60,76,-60z
+M1001 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2822em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback">斜边</span><span class="mord">500</span></span></span></span></p>
+<p><img src= "/img/loading.gif" data-lazy-src="/Typora_images/%E3%80%8Awindows%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B-%E5%89%8D%E5%9B%9B%E7%AB%A0%E7%AC%94%E8%AE%B0-%E5%B0%8F%E7%94%B2%E9%B1%BC/image-20210803200925565.png" alt="image-20210803200925565"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="/Typora_images/%E3%80%8Awindows%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B-%E5%89%8D%E5%9B%9B%E7%AB%A0%E7%AC%94%E8%AE%B0-%E5%B0%8F%E7%94%B2%E9%B1%BC/image-20210803201154589.png" alt="image-20210803201154589"></p>
+<p>​	<strong>要注意的一点是 TextOut 函数对齐的基准点取决于当前的文本对齐模式。</strong></p>
+<p>​	文本对齐模式默认是TA_LEFT, TA_TOP 和 TA_NOUPDATECP</p>
+<blockquote>
+<p>通过下断点调试以下代码可以得到默认文本对齐模式的值：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;……UINT uAlign;……<span class="keyword">case</span> WM_PAINT:           uAlign = GetTextAlign(hdc);……</span><br></pre></td></tr></table></figure>
+<p>uAlign是0</p>
+<p>因为对齐模式的定义是：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="comment">/* Text Alignment Options */</span><span class="meta">#<span class="meta-keyword">define</span> TA_NOUPDATECP                0#<span class="meta-keyword">define</span> TA_UPDATECP                      1#<span class="meta-keyword">define</span> TA_LEFT                                 0#<span class="meta-keyword">define</span> TA_RIGHT                              2#<span class="meta-keyword">define</span> TA_CENTER                           6#<span class="meta-keyword">define</span> TA_TOP                                 0#<span class="meta-keyword">define</span> TA_BOTTOM                         8#<span class="meta-keyword">define</span> TA_BASELINE                       24#<span class="meta-keyword">if</span> (WINVER &gt;= 0x0400)#<span class="meta-keyword">define</span> TA_RTLREADING                256#<span class="meta-keyword">define</span> TA_MASK       (TA_BASELINE+TA_CENTER+TA_UPDATECP+TA_RTLREADING)#<span class="meta-keyword">else</span>#<span class="meta-keyword">define</span> TA_MASK       (TA_BASELINE+TA_CENTER+TA_UPDATECP)#<span class="meta-keyword">endif</span>#<span class="meta-keyword">define</span> VTA_BASELINE TA_BASELINE#<span class="meta-keyword">define</span> VTA_LEFT            TA_BOTTOM#<span class="meta-keyword">define</span> VTA_RIGHT         TA_TOP#<span class="meta-keyword">define</span> VTA_CENTER      TA_CENTER#<span class="meta-keyword">define</span> VTA_BOTTOM    TA_RIGHT#<span class="meta-keyword">define</span> VTA_TOP             TA_LEFT</span></span><br></pre></td></tr></table></figure>
+<p>TA_LEFT, TA_TOP 和 TA_NOUPDATECP 都是 0，因此 TA_LEFT | TA_TOP | TA_NCUPDATECP 当然也为 0</p>
+</blockquote>
+<hr>
+<p>问：下列代码输出的文本如何显示？</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> WM_PAINT:    hdc = BeginPaint(hwnd, &amp;ps);    SetTextAlign(hdc, GetTextAlign(hdc) | TA_RIGHT);<span class="comment">//TA_RIGHT设置基准点在限定矩阵的右边上    TextOut(hdc, 0, 0, TEXT(&quot;I love FishC.com!&quot;), 17);    EndPaint(hwnd, &amp;ps);</span></span><br></pre></td></tr></table></figure>
+<p>错误认为：<img src= "/img/loading.gif" data-lazy-src="/Typora_images/%E3%80%8Awindows%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B-%E5%89%8D%E5%9B%9B%E7%AB%A0%E7%AC%94%E8%AE%B0-%E5%B0%8F%E7%94%B2%E9%B1%BC/115447t9z2nnxzxz200d7s.png" alt="img"></p>
+<p>实际上：<img src= "/img/loading.gif" data-lazy-src="/Typora_images/%E3%80%8Awindows%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B-%E5%89%8D%E5%9B%9B%E7%AB%A0%E7%AC%94%E8%AE%B0-%E5%B0%8F%E7%94%B2%E9%B1%BC/115448dna5daaxncjn4no5.png" alt="img"></p>
+<p>原因：</p>
+<p>​	TA_RIGHT是设置基准点在限定矩阵的右边上，限定矩形是指能将正文字符串的所有字符单元限定于其中的矩形，而不是窗口的内边框。</p>
+<p>​	TextOut中的x，y坐标应该是限定矩形的基准点的坐标位置，将文字对齐方式设为TA-RIGHT,且原来文本对齐模式默认是TA_TOP等,这样将基准点定位在限定矩形的右上角，又坐标为 0 , 0，这样整个矩形就在客户区之外，自然看不到文字了</p>
+<p><img src= "/img/loading.gif" data-lazy-src="/Typora_images/%E3%80%8Awindows%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B-%E5%89%8D%E5%9B%9B%E7%AB%A0%E7%AC%94%E8%AE%B0-%E5%B0%8F%E7%94%B2%E9%B1%BC/004413v0e9refyp7p23bpy.png" alt="img"></p>
+<p>‘字符框’：一串字符构成的字符串形成的一个矩形“长条”</p>
+<p>“锚点”：SetTextAlign第二个参数，指定的就是这个‘字符框’的锚点</p>
+<p>​	<strong>如果想要把一个有大小（起码不止一个点）的物体放到一个位置上，仅仅指定这个位置是不够的，还需要一个锚点，也就是物体本身上的参照点。目的位置和锚点共同确定了放置情况的唯一性。</strong></p>
+<blockquote>
+<p>好文：</p>
+<p>​	<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_37818081/article/details/89036506">Windows API SetTextAlign之我所见</a></p>
+</blockquote>
+<p>练一下：使用TextOut函数居中显示“I love <a target="_blank" rel="noopener" href="http://FishC.com">FishC.com</a>!”</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> WM_PAINT:                hdc = BeginPaint(hwnd, &amp;ps);                GetClientRect(hwnd, &amp;rect);                SetTextAlign(hdc, GetTextAlign(hdc) | TA_CENTER);<span class="comment">//矩阵本身的锚点设置为中心                TextOut(hdc, (rect.right-rect.left)/2, (rect.bottom-rect.top)/2, TEXT(&quot;I love FishC.com!&quot;), 17);//x取中间，y取中间，指定为客户区中心点                EndPaint(hwnd, &amp;ps);                return 0;</span></span><br></pre></td></tr></table></figure>
+<p>那么就是这样放了：</p>
+<p><img src= "/img/loading.gif" data-lazy-src="/Typora_images/%E3%80%8Awindows%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B-%E5%89%8D%E5%9B%9B%E7%AB%A0%E7%AC%94%E8%AE%B0-%E5%B0%8F%E7%94%B2%E9%B1%BC/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zNzgxODA4MQ==,size_16,color_FFFFFF,t_70.png" alt="在这里插入图片描述"></p>
+<h2 id="安全地使用字符串">安全地使用字符串</h2>
+<p>​	微软由于过去对字符串处理函数的缓冲区保护非常薄弱，所以常常会有缓冲区溢出的问题出现，以至于后来有很长一段时间，缓冲区溢出攻击成为Hacker的主流手段。</p>
+<p>​	因此，我们提倡使用安全的字符串处理函数代替：</p>
+<table>
+<thead>
+<tr>
+<th><strong>旧的字符串处理函数</strong></th>
+<th><strong>新的字符串处理函数</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://bbs.fishc.com/thread-49698-1-1.html">lstrlen</a></td>
+<td><a target="_blank" rel="noopener" href="http://bbs.fishc.com/thread-49704-1-1.html">StringCchLength</a></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://bbs.fishc.com/thread-49691-1-1.html">wprintf</a></td>
+<td><a target="_blank" rel="noopener" href="http://bbs.fishc.com/thread-49693-1-1.html">StringCchPrintf</a></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://bbs.fishc.com/thread-49708-1-1.html">lstrcat</a></td>
+<td><a target="_blank" rel="noopener" href="http://bbs.fishc.com/thread-49707-1-1.html">StringCchCat</a></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://bbs.fishc.com/thread-49714-1-1.html">lstrcpy</a></td>
+<td><a target="_blank" rel="noopener" href="http://bbs.fishc.com/thread-49713-1-1.html">StringCchCopy</a></td>
+</tr>
+</tbody>
+</table>
+<p>​	注：使用安全字符串处理函数，需要头文件 strsafe.h</p>
+<p>​	安全字符串函数相比原来的字符串函数安全在于，在调用的时候<strong>需要提供缓冲区大小的参数</strong>来限定缓冲区的最大范围，避免程序员的前期设计疏忽而导致缓冲区溢出攻击。</p>
+<hr>
+<p>​	没有’\0’结尾，lstrlen会一直往后找直到有’\0’为止</p>
+<p>例题：发现并改错</p>
+<p>​	以下代码，我本希望将字符串打印到窗口正中间，但却跟着打印出一些乱码（如下图），请问是什么原因导致呢？顺便麻烦帮忙修改一下。</p>
+<p><img src= "/img/loading.gif" data-lazy-src="/Typora_images/%E3%80%8Awindows%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B-%E5%89%8D%E5%9B%9B%E7%AB%A0%E7%AC%94%E8%AE%B0-%E5%B0%8F%E7%94%B2%E9%B1%BC/165827vdmk94p1x1d3z1q9.png" alt="img"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">LRESULT CALLBACK <span class="title">WndProc</span><span class="params">(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)</span></span>&#123;        HDC hdc;        PAINTSTRUCT ps;        RECT rect;        TCHAR buffer[<span class="number">17</span>] = TEXT(<span class="string">&quot;I love FishC.com!&quot;</span>);        <span class="keyword">switch</span> (message)        &#123;        <span class="keyword">case</span> WM_PAINT:                hdc = BeginPaint(hwnd, &amp;ps);                GetClientRect(hwnd, &amp;rect);                                SetTextAlign(hdc, GetTextAlign(hdc) | TA_CENTER);                TextOut(hdc, (rect.right - rect.left) / <span class="number">2</span>, (rect.bottom - rect.top) / <span class="number">2</span>, buffer, lstrlen(buffer));                                EndPaint(hwnd, &amp;ps);                <span class="keyword">return</span> <span class="number">0</span>;        <span class="keyword">case</span> WM_DESTROY:                PostQuitMessage(<span class="number">0</span>);                <span class="keyword">return</span> <span class="number">0</span>;        &#125;        <span class="keyword">return</span> DefWindowProc(hwnd, message, wParam, lParam);&#125;</span><br></pre></td></tr></table></figure>
+<p>​	问题出现在声明 buffer 变量的时候粗心了，由于“I love <a target="_blank" rel="noopener" href="http://FishC.com">FishC.com</a>!”总共有17个字符，那么 TCHAR buffer[17] = TEXT(“I love <a target="_blank" rel="noopener" href="http://FishC.com">FishC.com</a>!”); 的话，buffer 变量就不包含空字符（‘\0’），而 lstrlen 是依据空字符来计算字符串的长度，因此 lstrlen 会计算出错误的结果。</p>
+<p>更正后：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">……<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;strsafe.h&quot;</span>……LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)&#123;        HDC hdc;        PAINTSTRUCT ps;        RECT rect;        size_t iTarget;        TCHAR buffer[] = TEXT(<span class="meta-string">&quot;I love FishC.com!&quot;</span>);        switch (message)        &#123;        case WM_PAINT:                hdc = BeginPaint(hwnd, &amp;ps);                GetClientRect(hwnd, &amp;rect);                                StringCchLength(buffer, 1024, &amp;iTarget);<span class="comment">//传入iTarget，函数调用后iTarget为传入的字符串的字符个数，不包括&#x27;\0&#x27;                SetTextAlign(hdc, GetTextAlign(hdc) | TA_CENTER);                TextOut(hdc, (rect.right - rect.left) / 2, (rect.bottom - rect.top) / 2, buffer, iTarget);                                EndPaint(hwnd, &amp;ps);                return 0;        case WM_DESTROY:                PostQuitMessage(0);                return 0;        &#125;        return DefWindowProc(hwnd, message, wParam, lParam);&#125;</span></span></span><br></pre></td></tr></table></figure>
+<hr>
+<p>例：以下代码打印什么内容？</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TCHAR szBuffer[<span class="number">128</span>];        <span class="keyword">size_t</span> iTarget;        ……        <span class="keyword">case</span> WM_PAINT:                hdc = BeginPaint(hwnd, &amp;ps);                StringCchPrintf(szBuffer, <span class="number">13</span>, TEXT(<span class="string">&quot;%s&quot;</span>), TEXT(<span class="string">&quot;I love FishC.com!&quot;</span>));<span class="comment">//I love FishC.com!是17个字符                StringCchLength(szBuffer, 13, &amp;iTarget);                TextOut(hdc, 10, 10, szBuffer, iTarget);                EndPaint(hwnd, &amp;ps);                return 0;</span></span><br></pre></td></tr></table></figure>
+<p>答：</p>
+<p>​	会打印字符串的前 12 个字符：I love FishC?</p>
+<p>​	由于 StringCchPrintf(szBuffer, 13, TEXT(“%s”), TEXT(“I love <a target="_blank" rel="noopener" href="http://FishC.com">FishC.com</a>!”)); 限定了缓冲区的长度为 13，因此会将字符串的前 12 个字符加 1 个 ‘\0’ 写入到缓冲区中（为了确保不会发生越界访问）</p>
+<p>例子：但即使用了安全字符串函数也可能…</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TCHAR szBuffer[<span class="number">17</span>];        <span class="keyword">size_t</span> iTarget;        ……        <span class="keyword">case</span> WM_PAINT:                hdc = BeginPaint(hwnd, &amp;ps);                StringCchPrintf(szBuffer, <span class="number">128</span>, TEXT(<span class="string">&quot;%s&quot;</span>), TEXT(<span class="string">&quot;I love FishC.com!&quot;</span>));                StringCchLength(szBuffer, <span class="number">128</span>, &amp;iTarget);                TextOut(hdc, <span class="number">10</span>, <span class="number">10</span>, szBuffer, iTarget);                EndPaint(hwnd, &amp;ps);                <span class="keyword">return</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+<p>答：虽然使用了安全字符串函数，但由于程序猿写代码时打瞌睡了，因此还是造成了程序崩溃。</p>
+<p>​	该程序崩溃的原因是 szBuffer 字符串声明的长度不够（17），StringCchPrintf 函数刚好往 szBuffer 写入 17 字符，因此 szBuffer 并没有足够的空间写入字符串结束符 ‘\0’，导致 TextOut 函数读取到没有结束符的 szBuffer 字符串而崩溃。</p>
+<p>（有联系的题）</p>
+<p>例：按要求写代码：使用安全字符串函数 StringCchCat 将两个字符串（“no zuo no die” 和 “why you try”）合并在第一个字符串中。要求检测结果，如果合并成功，则将字符串打印到窗口客户区的中间位置，如果合并失败，则弹出&quot;合并失败&quot;的消息框。</p>
+<p>答:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">……<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;strsafe.h&quot;</span>……LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)&#123;        HDC hdc;        PAINTSTRUCT ps;        RECT rect;            size_t iTarget;        HRESULT hr;            TCHAR buffer1[128] = TEXT(<span class="meta-string">&quot;no zuo no die &quot;</span>);        TCHAR buffer2[128] = TEXT(<span class="meta-string">&quot;why you try&quot;</span>);        switch (message)        &#123;        case WM_PAINT:                hdc = BeginPaint(hwnd, &amp;ps);                GetClientRect(hwnd, &amp;rect);                                hr = StringCchCat(buffer1, 256, buffer2);<span class="comment">//SStringCchCat返回一个HRESULT，而不是拼接好的字符串指针，建议使用SUCCEEDEN和FAILED宏来测试这个函数的返回值                if (SUCCEEDED(hr))                &#123;                        StringCchLength(buffer1, 1024, &amp;iTarget);//第三个参数指向字符串的字符个数                                            SetTextAlign(hdc, GetTextAlign(hdc) | TA_CENTER);//更加常用的情况，SetTextAlign放TextOut前一句吧                        TextOut(hdc, (rect.right - rect.left) / 2, (rect.bottom - rect.top) / 2, buffer1, iTarget);                &#125;                else                &#123;                        MessageBox(hwnd, TEXT(&quot;抱歉，合并失败！&quot;), TEXT(&quot;警告&quot;), MB_OK | MB_ICONWARNING);                &#125;                EndPaint(hwnd, &amp;ps);                return 0;        case WM_DESTROY:                PostQuitMessage(0);                return 0;        &#125;        return DefWindowProc(hwnd, message, wParam, lParam);&#125;</span></span></span><br></pre></td></tr></table></figure>
+<p>几点问题：（改一下）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TCHAR buffer1[<span class="number">128</span>] = TEXT(<span class="string">&quot;no zuo no die &quot;</span>);<span class="comment">//算上&#x27;\0&#x27;是15个字符        TCHAR buffer2[128] = TEXT(&quot;why you try&quot;);//算上&#x27;\0&#x27;是12个字符                hr = StringCchCat(buffer1, 256, buffer2);		StringCchLength(buffer1, 1024, &amp;iTarget);</span></span><br></pre></td></tr></table></figure>
+<p>mark以后有时间再研究buffer1[]、StringCchCat中的缓冲区大小对于结果的影响：</p>
+<p>TCHAR buffer1[这里肯定要&gt;=14+11+一个’\0’即26]，即便hr = StringCchCat(buffer1, 256, buffer2);这里的缓冲区大小＞26，和上边程序猿打瞌睡的结果一样，因为buffer1没有足够空间放拼接后的字符串，会导致拼接失败？？</p>
+<hr>
+<p>其他问题：</p>
+<ol>
+<li>
+<p>StringCchPrintf 和 StringCbPrintf函数之间的区别：</p>
+<p>答：区别在于第二个参数。StringCchPrintf 是按<strong>字符</strong>计算字符串的长度，StringCbPrintf 是按<strong>字节</strong>计算字符串的长度。</p>
+</li>
+<li>
+<p>size_t 是什么类型？</p>
+<p>答：在 C/C++ 中，设计 size_t 就是为了适应多平台，size_t 的引入增强了程序在不同平台上的可移植性。</p>
+<p>size_t 是针对系统定制的一种数据类型，一般是整型，因为 C/C++ 标准只定义最低的位数，而不是必需的固定位数。而且在内存里，对数的高位对齐存储还是低位对齐存储各系统都不一样。为了提高代码的可移植性，就有必要定义这样的数据类型。</p>
+<p>一般这种类型都会定义到它具体占几位内存等。当然，有些是编译器或系统已经给定义好的。经测试发现，在 32 位系统中 size_t 是 4 字节的，而在 64 位系统中，size_t 是 8 字节的，这样利用该类型可以增强程序的可移植性。</p>
+</li>
+</ol>
+<h2 id="不要试图猜测文本的尺寸">不要试图猜测文本的尺寸</h2>
+<p>​	我们一般在响应 WM_CREATE 消息时设置字体等初始化信息（WM_CREATE消息是窗口过程收到的第一条消息。当应用程序再WinMain中调用CreateWindow时，Windows将传送一条WM_CREATE消息给窗口过程），注意这些变量应该设置为 static 类型，因为我们会在今后的不同消息中使用它们。</p>
+<h1>API档案及扩展内容</h1>
+<h2 id="MessageBox">MessageBox</h2>
+<h2 id="WinMain">WinMain</h2>
+<p>函数原型：</p>
+<p><em>注释：<em>In</em> 说明该参数是输入的。</em></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> CALLBACK <span class="title">WinMain</span><span class="params">(  _In_ HINSTANCE hInstance,     <span class="comment">//指定应用程序当前实例的句柄  _In_ HINSTANCE hPrevInstance, //指定一个应用程序的前一个实例的句柄  _In_ LPSTR     lpCmdLine,     //该应用程序的命令行  _In_ int       nCmdShow       //控制窗口如何显示，参数从表中选);</span></span></span></span><br></pre></td></tr></table></figure>
+<p>返回值：</p>
+<p>\1. 如果程序执行成功，并且它收到一个 <a target="_blank" rel="noopener" href="http://bbs.fishc.com/thread-73784-1-1.html">WM_QUIT</a> 消息时，它应该返回包含在该消息的 wParam 参数的值。如果程序在进入消息循环之前终止，它应该返回 0</p>
+<p>备注：</p>
+<p>\2. 你的 WinMain 应初始化应用程序，显示其主窗口，然后进入一个消息循环循环，应用程序执行代码。当接收到一个 <a target="_blank" rel="noopener" href="http://bbs.fishc.com/thread-73784-1-1.html">WM_QUIT</a> 消息时，终止消息循环。在这一点上，你的 WinMain 函数应该返回并退出应用程序，返回在 <a target="_blank" rel="noopener" href="http://bbs.fishc.com/thread-73784-1-1.html">WM_QUIT</a> 消息的 wParam 参数的值。收到 <a target="_blank" rel="noopener" href="http://bbs.fishc.com/thread-73784-1-1.html">WM_QUIT</a> 消息是调用 <a target="_blank" rel="noopener" href="http://bbs.fishc.com/thread-47805-1-1.html">PostQuitMessage</a> 函数的结果， wParam 参数的值是 <a target="_blank" rel="noopener" href="http://bbs.fishc.com/thread-47805-1-1.html">PostQuitMessage</a> 函数的 nExitCode 参数的值。有关详细信息，请查看<a target="_blank" rel="noopener" href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms644928(v=vs.85).aspx#creating_loop">创建一个消息循环</a>。</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://fishc.com.cn/forum.php?mod=viewthread&amp;tid=73544&amp;highlight=winmain">WinMain-鱼C论坛</a></p>
+</blockquote>
+<h2 id="PostQuitMessage">PostQuitMessage</h2>
+<p>函数原型：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">VOID WINAPI <span class="title">PostQuitMessage</span><span class="params">(  _In_  <span class="keyword">int</span> nExitCode)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>备注：</p>
+<p>\1. PostQuitMessage 函数的功能是发送一个 WM_QUIT 消息给线程的消息队列并立即返回。</p>
+<p>\2. 当线程从消息队列里取得 WM_QUIT 消息时，应当退出消息循环并将返回系统，返回给系统的退出值必须是消息 WM_QUIT 的 wParam 参数（<strong>所以 WinMain 函数的返回值是 msg.wParam</strong>）。</p>
+<blockquote>
+<p>PostQuitMessage<br>
+<a target="_blank" rel="noopener" href="https://fishc.com.cn/thread-47805-1-1.html">https://fishc.com.cn/thread-47805-1-1.html</a><br>
+(出处: 鱼C论坛)</p>
+</blockquote>
+<h2 id="RECT结构">RECT结构</h2>
+<p>​	RECT 结构定义了一个矩形的左上角和右下角的坐标。</p>
+<p>结构原型：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">RECT</span> &#123;</span>  LONG left;  LONG top;  LONG right;  LONG bottom;&#125; RECT, *PRECT;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>成员</strong></th>
+<th><strong>含义</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>left</td>
+<td>指定矩形左上角的 x 坐标</td>
+</tr>
+<tr>
+<td>top</td>
+<td>指定矩形左上角的 y 坐标</td>
+</tr>
+<tr>
+<td>right</td>
+<td>指定矩形右下角的 x 坐标</td>
+</tr>
+<tr>
+<td>bottom</td>
+<td>指定矩形右下角的 y 坐标</td>
+</tr>
+</tbody>
+</table>
+<p>RECT 结构定义了一个矩形的左上角和右下角的坐标，以此来定位一个矩形的位置以及范围，如下，只需知道 A 点和 D 点的坐标，即可求出 B 点和 C 点的坐标以及整个矩形的面积等数据。</p>
+<p><img src= "/img/loading.gif" data-lazy-src="/Typora_images/%E3%80%8Awindows%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B-%E5%89%8D%E5%9B%9B%E7%AB%A0%E7%AC%94%E8%AE%B0-%E5%B0%8F%E7%94%B2%E9%B1%BC/184335ttz4ene3qj3ttuiz.png" alt="img"></p>
+<h2 id="lstrlen">lstrlen</h2>
+<p>​	函数用于计算指定字符串的长度（不包含’\0），该函数返回指定字符串的字符数。</p>
+<p><strong>注意：实际编程中不要再使用该函数，请使用 <a target="_blank" rel="noopener" href="http://bbs.fishc.com/thread-49704-1-1.html">StringCchLength</a> 或 StringCbLength 代替。</strong></p>
+<p>API函数原型：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> WINAPI <span class="title">lstrlen</span><span class="params">(  _In_  LPCTSTR lpString)</span></span>;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>参数</strong></th>
+<th><strong>含义</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lpString</td>
+<td>指向以’\0’为终止符的字符串</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回值：</strong></p>
+<p>\1. 该函数返回指定字符串的字符数；</p>
+<p>\2. 如果是空字符串，则返回 0。</p>
+<p>​	lstrlen 函数假定 lpString 参数是以’\0’结尾的字符串，但如果事实上传入的参数不按套路（没以’\0’结尾）出牌，你传进去的字符串即便被搜索完了，lstrlen仍然会一直往后算，直到找到恰好有’\0’，这会存在安全隐患，被艺高人胆大的黑客用精心构造的数据造成缓冲区溢出，最终导致程序无法按照期望正常运行。</p>
+<p>​	错误的使用 lstrlen 函数将可能会危害到应用程序的安全。</p>
+<h2 id="StringCchcat">StringCchcat</h2>
+<p>函数功能：</p>
+<p>​	StringCchCat 函数的功能是将一个字符串拼接到另一个字符串。</p>
+<p>​	StringCchCat 函数要求提供目标缓冲区的长度，以确保写入数据不会超出缓冲区的末尾。</p>
+<p>微软推荐使用该函数替代以下函数：</p>
+<ul>
+<li>strcat, wcscat, _tcsat</li>
+<li>lstrcat</li>
+<li>StrCat</li>
+<li>StrCatBuff</li>
+</ul>
+<p>API函数原型：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">HRESULT <span class="title">StringCchCat</span><span class="params">(  _Inout_  LPTSTR pszDest,  _In_     <span class="keyword">size_t</span> cchDest,  _In_     LPCTSTR pszSrc)</span></span>;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>参数</strong></th>
+<th><strong>含义</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pszDest</td>
+<td>1. 目标缓冲区，同时包含第一个字符串 <br />2. 该缓冲区必须大于或等于 pszDest + pszSrc + 1（两个字符串的字符总和+‘\0’）</td>
+</tr>
+<tr>
+<td>cchDest</td>
+<td>1. 目标缓冲区的大小（字符个数）<br /> 2. 该值必须大于或等于 pszDest + pszSrc + 1（两个字符串的字符总和+‘\0’） <br />3. 这个数不能超过 STRSAFE_MAX_CCH</td>
+</tr>
+<tr>
+<td>pszSrc</td>
+<td>第二个字符串</td>
+</tr>
+</tbody>
+</table>
+<p>返回值：</p>
+<p>这个函数返回一个 HRESULT，而不是拼接好的字符串指针。我们强烈建议您使用 <a target="_blank" rel="noopener" href="http://bbs.fishc.com/thread-49703-1-2.html">SUCCEEDED</a> 和 <a target="_blank" rel="noopener" href="http://bbs.fishc.com/thread-49703-1-2.html">FAILED</a> 宏来测试这个函数的返回值。</p>
+<p>返回值可以是以下任意一个值：</p>
+<table>
+<thead>
+<tr>
+<th><strong>返回代码</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S_OK</td>
+<td>字符串正常拼接</td>
+</tr>
+<tr>
+<td>STRSAFE_E_INVALID_PARAMETER</td>
+<td>1. cchDest 参数的值为 0 <br />2. cchDest 参数的值大于 STRSAFE_MAX_CCH <br />3. 目标缓冲区空间已满</td>
+</tr>
+<tr>
+<td>STRSAFE_E_INSUFFICIENT_BUFFER</td>
+<td>1. 因缓冲区空间不足导致失败 <br />2. 结果被截断，当仍然包含’\0’结尾 <br />3. 如果截断操作可以被接受，则不一定被看作是失败</td>
+</tr>
+</tbody>
+</table>
+<h2 id="SUCCEEDED和FAILED宏">SUCCEEDED和FAILED宏</h2>
+<p>宏功能：</p>
+<p>​	SUCCEEDED 宏表示测试成功，FAILED 宏表示测试失败。</p>
+<p>宏原型：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BOOL <span class="title">SUCCEEDED</span><span class="params">(   HRESULT hr)</span></span>;……<span class="function">BOOL <span class="title">FAILED</span><span class="params">(   HRESULT hr)</span></span>;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>参数</strong></th>
+<th><strong>含义</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hr</td>
+<td>1. 状态码 <br />2. 该值可以是 HRESULT 或 SCODE 类型 <br />3. 非负数表示成功 <br />4. 负数表示失败</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回值：</strong></p>
+<p>\1. 如果 hr 的值大于等于 0，则结果为 TRUE；</p>
+<p>\2. 如果 hr 的值小于 0，则结果为 FALSE。</p>
+<h2 id="StringCchLength">StringCchLength</h2>
+<p>​	StringCchLength 函数用于确定字符串是否超过了规定的长度，以字符为计算单位。</p>
+<p>微软推荐使用该函数替代以下函数：</p>
+<ul>
+<li>strlen, wcslen, _tcslen</li>
+</ul>
+<p>API函数原型：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">HRESULT <span class="title">StringCchLength</span><span class="params">(  _In_   LPCTSTR psz,  _In_   <span class="keyword">size_t</span> cchMax,  _Out_  <span class="keyword">size_t</span> *pcch)</span></span>;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>参数</strong></th>
+<th><strong>含义</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>psz</td>
+<td>指向待检查的字符串</td>
+</tr>
+<tr>
+<td>cchMax</td>
+<td>1. psz 参数里最大允许的字符数量，包括’\0’ <br />2. 这个数不能超过 STRSAFE_MAX_CCH</td>
+</tr>
+<tr>
+<td>pcch</td>
+<td>1. psz 参数指向字符串的字符个数，不包括’\0’ <br />2. 这个值只有在 psz 指针不为 NULL，且函数成功时有效</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回值：</strong></p>
+<p>​	这个函数返回一个 HRESULT，而不是指定字符串的字符个数。我们强烈建议您使用 <a target="_blank" rel="noopener" href="http://bbs.fishc.com/thread-49703-1-1.html">SUCCEEDED</a> 和 <a target="_blank" rel="noopener" href="http://bbs.fishc.com/thread-49703-1-1.html">FAILED</a> 宏来测试这个函数的返回值。</p>
+<p>返回值可以是以下任意一个值：</p>
+<table>
+<thead>
+<tr>
+<th><strong>返回代码</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S_OK</td>
+<td>psz 指向的字符串不为空，且字符串的长度（包括’\0’）小于等于 cchMax</td>
+</tr>
+<tr>
+<td>STRSAFE_E_INVALID_PARAMETER</td>
+<td>1. psz 指向空字符串 <br />2. cchMax 的值大于STRSAFE_MAX_CCH <br />3. psz 指向的字符串的字符个数超过 cchMax</td>
+</tr>
+</tbody>
+</table>
+</article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>《windows程序设计5th（珍藏版）》-前四章笔记-小甲鱼</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="https://jyxyz.github.io/posts/6a024e36.html">https://jyxyz.github.io/posts/6a024e36.html</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a" style="display: inline-block;width: 120px"><h>博主✍</h><div class="post-copyright-cc-info"><h>阿耶</h></div></div><div class="post-copyright-c" style="display: inline-block;width: 120px"><h>本篇发布于📚</h><div class="post-copyright-cc-info"><h>2021-07-30</h></div></div><div class="post-copyright-u" style="display: inline-block;width: 120px"><h>本篇更新于🕝</h><div class="post-copyright-cc-info"><h>2021-09-15</h></div></div><div class="post-copyright-c" style="display: inline-block;width: 120px"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY 4.0" href="https://creativecommons.org/licenses/by/4.0/deed.zh">CC BY 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/WIN32-API/">WIN32 API</a></div><div class="post_share"><div class="social-share" data-image="/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq,qzone"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 要饭码</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/reward/wechat.png" target="_blank"><img class="post-qr-code-img" src="/img/reward/wechat.png" alt="wechat饿饿"/></a><div class="post-qr-code-desc">wechat饿饿</div></li><li class="reward-item"><a href="/img/reward/alipay.png" target="_blank"><img class="post-qr-code-img" src="/img/reward/alipay.png" alt="alipay饿饿"/></a><div class="post-qr-code-desc">alipay饿饿</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/77a52927.html"><img class="prev-cover" src="/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">《汇编语言-王爽-4th》实验代码</div></div></a></div><div class="next-post pull-right"><a href="/posts/538d27d6.html"><img class="next-cover" src="/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">PE文件偏移地址计算</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/57d48d90.html" title="WIN32 API档案速查"><img class="cover" src="/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-11</div><div class="title">WIN32 API档案速查</div></div></a></div><div><a href="/posts/4eb9716e.html" title="Windows程序设计"><img class="cover" src="/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-11-25</div><div class="title">Windows程序设计</div></div></a></div><div><a href="/posts/e8553cf2.html" title="《Windows黑客编程技术详解》"><img class="cover" src="/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-11</div><div class="title">《Windows黑客编程技术详解》</div></div></a></div><div><a href="/posts/97187543.html" title="windows程序设计实例"><img class="cover" src="/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-11</div><div class="title">windows程序设计实例</div></div></a></div><div><a href="/posts/7c96f25c.html" title="《Windows api开发详解》-源码学习"><img class="cover" src="/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-09-17</div><div class="title">《Windows api开发详解》-源码学习</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">扫盲</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%88%E7%89%99%E5%88%A9%E6%A0%87%E8%AE%B0%E6%B3%95"><span class="toc-number">1.1.</span> <span class="toc-text">匈牙利标记法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%A5%E6%9F%84"><span class="toc-number">1.2.</span> <span class="toc-text">句柄</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%A2%E6%88%B7%E5%8C%BA%E5%92%8C%E9%9D%9E%E5%AE%A2%E6%88%B7%E5%8C%BA"><span class="toc-number">1.3.</span> <span class="toc-text">客户区和非客户区</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">窗口与消息</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Windows%E7%AA%97%E5%8F%A3%E8%AF%9E%E7%94%9F%E8%BF%87%E7%A8%8B"><span class="toc-number">2.1.</span> <span class="toc-text">Windows窗口诞生过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%A6%82%E4%BD%95%E9%94%80%E6%AF%81%E4%B8%80%E4%B8%AA%E7%AA%97%E5%8F%A3"><span class="toc-number">2.2.</span> <span class="toc-text">系统如何销毁一个窗口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%8F%E5%85%B8%E6%A8%A1%E6%9D%BF%E4%BB%A3%E7%A0%81"><span class="toc-number">2.3.</span> <span class="toc-text">经典模板代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B6%88%E6%81%AF"><span class="toc-number">2.3.1.</span> <span class="toc-text">消息</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E6%9C%BA%E5%88%B6-2"><span class="toc-number">2.3.1.1.</span> <span class="toc-text">消息机制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E5%BE%AA%E7%8E%AF"><span class="toc-number">2.3.1.2.</span> <span class="toc-text">消息循环</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AA%97%E5%8F%A3%E8%BF%87%E7%A8%8B-2"><span class="toc-number">2.3.2.</span> <span class="toc-text">窗口过程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E9%97%AE%E9%A2%98"><span class="toc-number">2.3.2.1.</span> <span class="toc-text">调用问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E5%AE%83%E9%97%AE%E9%A2%98"><span class="toc-number">2.3.3.</span> <span class="toc-text">其它问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">文本输出</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#GDI"><span class="toc-number">3.1.</span> <span class="toc-text">GDI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E5%A4%87%E7%8E%AF%E5%A2%83-Device-Context"><span class="toc-number">3.2.</span> <span class="toc-text">设备环境(Device Context)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%BE%97%E8%AE%BE%E5%A4%87%E7%8E%AF%E5%A2%83%E5%8F%A5%E6%9F%84%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="toc-number">3.2.1.</span> <span class="toc-text">获得设备环境句柄的两种方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TextOut%E5%8F%8A%E6%96%87%E6%9C%AC%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="toc-number">3.3.</span> <span class="toc-text">TextOut及文本相关概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E5%9C%B0%E4%BD%BF%E7%94%A8%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">3.4.</span> <span class="toc-text">安全地使用字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E8%A6%81%E8%AF%95%E5%9B%BE%E7%8C%9C%E6%B5%8B%E6%96%87%E6%9C%AC%E7%9A%84%E5%B0%BA%E5%AF%B8"><span class="toc-number">3.5.</span> <span class="toc-text">不要试图猜测文本的尺寸</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">API档案及扩展内容</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#MessageBox"><span class="toc-number">4.1.</span> <span class="toc-text">MessageBox</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WinMain"><span class="toc-number">4.2.</span> <span class="toc-text">WinMain</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PostQuitMessage"><span class="toc-number">4.3.</span> <span class="toc-text">PostQuitMessage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RECT%E7%BB%93%E6%9E%84"><span class="toc-number">4.4.</span> <span class="toc-text">RECT结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lstrlen"><span class="toc-number">4.5.</span> <span class="toc-text">lstrlen</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#StringCchcat"><span class="toc-number">4.6.</span> <span class="toc-text">StringCchcat</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SUCCEEDED%E5%92%8CFAILED%E5%AE%8F"><span class="toc-number">4.7.</span> <span class="toc-text">SUCCEEDED和FAILED宏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#StringCchLength"><span class="toc-number">4.8.</span> <span class="toc-text">StringCchLength</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">本地搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'acloudenv-3gdr1re432b1f469',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.vemoji)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    twikoo.getCommentsCount({
+      envId: 'acloudenv-3gdr1re432b1f469',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      document.getElementById('twikoo-count').innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>

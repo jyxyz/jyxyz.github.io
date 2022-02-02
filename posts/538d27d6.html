@@ -1,0 +1,282 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>PE文件偏移地址计算 | 一杯热牛奶</title><meta name="keywords" content="PE"><meta name="author" content="阿耶"><meta name="copyright" content="阿耶"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="关于PE文件偏移地址的早期理解（较为生涩）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PE文件偏移地址计算">
+<meta property="og:url" content="https://jyxyz.github.io/posts/538d27d6.html">
+<meta property="og:site_name" content="一杯热牛奶">
+<meta property="og:description" content="关于PE文件偏移地址的早期理解（较为生涩）">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jyxyz.github.io/img/default.jpg">
+<meta property="article:published_time" content="2021-07-03T15:27:45.000Z">
+<meta property="article:modified_time" content="2021-07-03T15:27:45.000Z">
+<meta property="article:author" content="阿耶">
+<meta property="article:tag" content="PE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jyxyz.github.io/img/default.jpg"><link rel="shortcut icon" href="/img/portrait.png"><link rel="canonical" href="https://jyxyz.github.io/posts/538d27d6"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":270},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":200,"languages":{"author":"作者: 阿耶","link":"链接: ","source":"来源: 一杯热牛奶","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#BEE5D3","bgDark":"#BEE5D3","position":"bottom-right"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'PE文件偏移地址计算',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2021-07-03 23:27:45'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/copyright.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/heoMainColor.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/poem.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.0.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/portrait.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">22</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">一杯热牛奶</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">PE文件偏移地址计算</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-07-03T15:27:45.000Z" title="发表于 2021-07-03 23:27:45">2021-07-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-07-03T15:27:45.000Z" title="更新于 2021-07-03 23:27:45">2021-07-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Windows%E5%AE%89%E5%85%A8/">Windows安全</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Windows%E5%AE%89%E5%85%A8/%E7%B3%BB%E7%BB%9F%E7%AF%87/">系统篇</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Windows%E5%AE%89%E5%85%A8/%E7%B3%BB%E7%BB%9F%E7%AF%87/PE%E6%A0%BC%E5%BC%8F/">PE格式</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="PE文件偏移地址计算"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/posts/538d27d6.html#post-comment"><span id="twikoo-count"></span></a></span></div></div></div><article class="post-content" id="article-container"><blockquote>
+<p>准备删除，待搬运到文章“PE格式”中</p>
+</blockquote>
+<p>知识点：</p>
+<img src= "/img/loading.gif" data-lazy-src="/Typora_images/PE文件偏移地址计算/image-20210703224901946.png" alt="image-20210703224901946" style="zoom:50%;" />
+<p>红框：位于磁盘中的PE文件（未运行）</p>
+<p>PE文件由一个一个区块组成</p>
+<p><code>文件偏移地址（FOA/ROffest/RAW offset）</code>：相对于文件开头的偏移</p>
+<p>紫框：运行PE文件，操作系统将磁盘中的PE文件加载到内存后</p>
+<p><code>映像基址（Image Base Address）</code>：PE文件装入内存时的基地址</p>
+<blockquote>
+<p>因为有很多进程同时使用内存，运行一个PE文件，操作系统负责在内存中挑选一块空地将PE文件加载进来执行，这块空地的地址加载后你就晓得了，上图中映像基址为0x400000</p>
+</blockquote>
+<p><code>虚拟地址（Virtual Address，VA/VOffest）</code>：PE文件加载进内存后，指令在<strong>虚拟内存</strong>中的<strong>绝对地址</strong></p>
+<blockquote>
+<p>进程看到的是虚拟内存，而不是真实的物理地址，这点不重要</p>
+<img src= "/img/loading.gif" data-lazy-src="/Typora_images/PE文件偏移地址计算/image-20210703225854916.png" alt="image-20210703225854916" style="zoom: 50%;" />
+</blockquote>
+<p>相对虚拟地址（Relative Virtual Address,RVA）：虚拟内存地址相对于映像基址的<code>偏移量</code></p>
+<hr>
+<p>它们之间的关系：</p>
+<img src= "/img/loading.gif" data-lazy-src="/Typora_images/PE文件偏移地址计算/image-20210703205118380.png" alt="image-20210703205118380" style="zoom: 50%;" />
+<hr>
+<p>再回到这张图：</p>
+<img src= "/img/loading.gif" data-lazy-src="/Typora_images/PE文件偏移地址计算/image-20210703230308114.png" alt="image-20210703230308114" style="zoom:67%;" />
+<p>你会发现<strong>PE文件</strong>和<strong>加载到内存后的PE文件</strong>，NULL大小不一样，why？</p>
+<ol>
+<li>在磁盘上的时候，PE文件中的数据是按照磁盘数据标准存放，以0x200字节为基本单位进行组织。当一个数据节（section）不足 0x200 字节时，不足的地方将被 0x00 填充；当一个数据节超过 0x200字节时，下一个 0x200 块将分配给这个节使用。因此 PE 数据节的大小永远是 0x200 的整数倍。</li>
+<li>当代码装入内存后，将按照内存数据标准存放，并以 0x1000 字节为基本单位进行组织。类似的，不足将被补全，若超出将分配下一个 0x1000 为其所用。因此，内存中的节总是0x1000 的整数倍。</li>
+</ol>
+<img src= "/img/loading.gif" data-lazy-src="/Typora_images/PE文件偏移地址计算/image-20210703230636614.png" alt="image-20210703230636614" style="zoom:67%;" />
+<p>因为两者组织的基本单位不同，所以才会有<code>节偏移</code>这个概念</p>
+<blockquote>
+<p>0x200和0x1000不需要记</p>
+</blockquote>
+<p>那么如果我们已知一条指令的地址VA，映像基址也知道了</p>
+<blockquote>
+<p>这是从（紫框）内存中得到数据，然后计算，找出PE文件的位置</p>
+<p>（因为在实际应用中，比如将PE文件载入OD，看到的都是虚拟地址，如果想寻一条指令/数据在PE文件中的位置，就需要进行计算）</p>
+</blockquote>
+<p>我们可以算出这条指令的RVA，但是有了RVA，在红框的PE文件中还差一个东东</p>
+<p>因为<img src= "/img/loading.gif" data-lazy-src="/Typora_images/PE文件偏移地址计算/image-20210703230308114.png" alt="image-20210703230308114" style="zoom: 50%;" /></p>
+<p>右边的NULL比左边的NULL长了，我们要减去这段差异</p>
+<p>如何计算？</p>
+<p>上图红线，这是一条指令，它是位于<code>节(.text)</code>区块，我们可以通过使用这个区块的VA（0x401000）-映像基址0x40000算出它的RVA即0x1000，就是下图这一段</p>
+<img src= "/img/loading.gif" data-lazy-src="/Typora_images/PE文件偏移地址计算/image-20210703231457623.png" alt="image-20210703231457623" style="zoom:67%;" />
+<p>那么再看<code>节(.text)</code>在PE文件中的文件偏移地址（红笔）</p>
+<img src= "/img/loading.gif" data-lazy-src="/Typora_images/PE文件偏移地址计算/image-20210703231558074.png" alt="image-20210703231558074" style="zoom:67%;" />
+<p>那么紫色的数值-红色的数值，我们就算出了左右两个NULL的差异，即<code>节偏移</code></p>
+<p>好，用指令的RVA-这个节偏移，就是这个指令在PE文件中的文件偏移地址了</p>
+<hr>
+<p>做题思路：</p>
+<p>1、计算要求指令/数据的RVA</p>
+<p>2、判断这个指令所在的区块，计算该区块的节偏移</p>
+<p>3、用1中的RVA-2中的节偏移，即可算出该指令/数据的文件偏移地址</p>
+<hr>
+<p>题：求虚拟内存地址VA为<strong>0x401500</strong>指令的文件偏移地址</p>
+<img src= "/img/loading.gif" data-lazy-src="/Typora_images/PE文件偏移地址计算/image-20210703205328131.png" alt="image-20210703205328131" style="zoom:67%;" />
+<p>答：</p>
+<p>由上图可知<code>Image Base映像基址</code>为0x400000</p>
+<p>则：题目所求指令的<code>相对虚拟地址RVA</code>=虚拟内存地址VA-Image Base映像基址=<strong>0x401500</strong>-0x400000=0x1500</p>
+<p>另外，由上图（右边内存）右边各块的起始虚拟内存地址VA，对比题目的虚拟内存地址VA<code>0x401500</code>，知道要计算的指令是位于<code>节(.text)</code>这一区块中</p>
+<p>从图（右边内存）中可得<code>节(.text)</code>这一区块的起始虚拟内存地址VA为0x401000，再减去Image Base映像基址可以算出相对虚拟地址RVA=0x1000</p>
+<p>从图（左边PE文件）中可得<code>节(.text)</code>这一区块的起始<code>文件偏移地址FOA</code>=0x600</p>
+<p>则可以算出：<code>节(.text)</code>的节偏移=RVA-FOA=0x1000-0x600=0x400</p>
+<p>那么这条指令的文件偏移地址=这条指令的RVA-<code>节(.text)</code>偏移=0x1500-0x400=0x1100</p>
+<p>变种1：</p>
+<p>给这个图让你算节偏移</p>
+<img src= "/img/loading.gif" data-lazy-src="/Typora_images/PE文件偏移地址计算/image-20210703232108875.png" alt="image-20210703232108875" style="zoom: 80%;" />
+<p>上图中<strong>起始偏移地址</strong>是在内存中的VA，起始文件偏移是在PE文件中（未运行在磁盘中）的FOA</p>
+<p>思路：算出要求的指令/数据的RVA后，对比上图中各区段的起始偏移地址，判断位于哪一个区段，然后计算该区段的<code>节偏移</code></p>
+<p>变种2：</p>
+<img src= "/img/loading.gif" data-lazy-src="/Typora_images/PE文件偏移地址计算/image-20210703232331929.png" alt="image-20210703232331929" style="zoom:67%;" />
+<p>思路：会有干扰，因为你不知道哪个对哪个</p>
+<p>破题：VOffest是虚拟内存地址VA，ROffset是文件偏移地址</p>
+<img src= "/img/loading.gif" data-lazy-src="/Typora_images/PE文件偏移地址计算/image-20210703232413094.png" alt="image-20210703232413094" style="zoom:67%;" />
+<p>参考：</p>
+<p>课本P263~265</p>
+<p>《0day安全软件漏洞分析技术》P8~10</p>
+<p>《加密与解密4》P406</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zzy1448331580/article/details/83038481">PE文件的内存映射</a></p>
+</article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>PE文件偏移地址计算</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="https://jyxyz.github.io/posts/538d27d6.html">https://jyxyz.github.io/posts/538d27d6.html</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a" style="display: inline-block;width: 120px"><h>博主✍</h><div class="post-copyright-cc-info"><h>阿耶</h></div></div><div class="post-copyright-c" style="display: inline-block;width: 120px"><h>本篇发布于📚</h><div class="post-copyright-cc-info"><h>2021-07-03</h></div></div><div class="post-copyright-u" style="display: inline-block;width: 120px"><h>本篇更新于🕝</h><div class="post-copyright-cc-info"><h>2021-07-03</h></div></div><div class="post-copyright-c" style="display: inline-block;width: 120px"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY 4.0" href="https://creativecommons.org/licenses/by/4.0/deed.zh">CC BY 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/PE/">PE</a></div><div class="post_share"><div class="social-share" data-image="/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq,qzone"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 要饭码</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/reward/wechat.png" target="_blank"><img class="post-qr-code-img" src="/img/reward/wechat.png" alt="wechat饿饿"/></a><div class="post-qr-code-desc">wechat饿饿</div></li><li class="reward-item"><a href="/img/reward/alipay.png" target="_blank"><img class="post-qr-code-img" src="/img/reward/alipay.png" alt="alipay饿饿"/></a><div class="post-qr-code-desc">alipay饿饿</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/6a024e36.html"><img class="prev-cover" src="/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">《windows程序设计5th（珍藏版）》-前四章笔记-小甲鱼</div></div></a></div><div class="next-post pull-right"><a href="/posts/977072af.html"><img class="next-cover" src="/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">软件安全期末复习</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/5bf78d14.html" title="PE格式"><img class="cover" src="/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-24</div><div class="title">PE格式</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/portrait.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">阿耶</div><div class="author-info__description">坐标雾都，二进制安全学僧，折腾逆向。同道中人，欢迎交流。博客分享学习历程，记录生活细事。</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">22</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div></div><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:2332521827@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget" id="card-poem"><div id="poem_sentence"></div><div id="poem_info"><div id="poem_dynasty"></div><div id="poem_author"></div></div></div><script src="https://cdn.jsdelivr.net/gh/zhheo/JS-Heo@main/poem/jinrishici.js" charset="utf-8"></script><script type="text/javascript">jinrishici.load(function(result) {
+var sentence = document.querySelector("#poem_sentence")
+var author = document.querySelector("#poem_author")
+var dynasty = document.querySelector("#poem_dynasty")
+
+var sentenceText = result.data.content
+sentenceText = sentenceText.substr(0, sentenceText.length - 1);
+sentence.innerHTML = sentenceText
+dynasty.innerHTML = result.data.origin.dynasty
+author.innerHTML = result.data.origin.author + '《' + result.data.origin.title + '》'
+});</script><!--!=partial('includes/widget/card_announcement', {}, {cache: true})--><div class="sticky_layout"></div></div></main><footer id="footer"><div id="footer-wrap"></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">本地搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'acloudenv-3gdr1re432b1f469',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.vemoji)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    twikoo.getCommentsCount({
+      envId: 'acloudenv-3gdr1re432b1f469',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      document.getElementById('twikoo-count').innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>

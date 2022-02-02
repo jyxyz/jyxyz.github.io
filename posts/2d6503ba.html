@@ -1,0 +1,367 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Butterfly主题美化和魔改记录 | 一杯热牛奶</title><meta name="keywords" content="Hexo,Butterfly,博客美化"><meta name="author" content="阿耶"><meta name="copyright" content="阿耶"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="前言 搭一个基本的博客其实很快，但最坑最耗时间的是美化，对于美的追求和渴望是永无止境的。 一开始建博客也只是想要有：带动态目录，代码块可复制、折叠展开的，能搜索文章内容方便找笔记，仅此而已😂。然后不知怎地就变成故事书了。 记录一下美化和魔改历程，一是防止玩崩版本升级找不到回家的路，二是给新建博客想美化的朋友一点参考。 参考的博客 通过友链查看了较多伙伴的博客，会点CSS、html、JS真的做的很">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Butterfly主题美化和魔改记录">
+<meta property="og:url" content="https://jyxyz.github.io/posts/2d6503ba.html">
+<meta property="og:site_name" content="一杯热牛奶">
+<meta property="og:description" content="前言 搭一个基本的博客其实很快，但最坑最耗时间的是美化，对于美的追求和渴望是永无止境的。 一开始建博客也只是想要有：带动态目录，代码块可复制、折叠展开的，能搜索文章内容方便找笔记，仅此而已😂。然后不知怎地就变成故事书了。 记录一下美化和魔改历程，一是防止玩崩版本升级找不到回家的路，二是给新建博客想美化的朋友一点参考。 参考的博客 通过友链查看了较多伙伴的博客，会点CSS、html、JS真的做的很">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jyxyz.github.io/img/default.jpg">
+<meta property="article:published_time" content="2021-10-07T03:09:30.000Z">
+<meta property="article:modified_time" content="2022-02-02T13:00:00.000Z">
+<meta property="article:author" content="阿耶">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="Butterfly">
+<meta property="article:tag" content="博客美化">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jyxyz.github.io/img/default.jpg"><link rel="shortcut icon" href="/img/portrait.png"><link rel="canonical" href="https://jyxyz.github.io/posts/2d6503ba"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":270},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":200,"languages":{"author":"作者: 阿耶","link":"链接: ","source":"来源: 一杯热牛奶","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#BEE5D3","bgDark":"#BEE5D3","position":"bottom-right"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Butterfly主题美化和魔改记录',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-02-02 21:00:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/copyright.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/heoMainColor.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/poem.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.0.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/portrait.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">22</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">一杯热牛奶</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">Butterfly主题美化和魔改记录</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-10-07T03:09:30.000Z" title="发表于 2021-10-07 11:09:30">2021-10-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-02-02T13:00:00.000Z" title="更新于 2022-02-02 21:00:00">2022-02-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/">博客美化</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>11分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Butterfly主题美化和魔改记录"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/posts/2d6503ba.html#post-comment"><span id="twikoo-count"></span></a></span></div></div></div><article class="post-content" id="article-container"><h2 id="前言">前言</h2>
+<p>搭一个基本的博客其实很快，但最坑最耗时间的是美化，对于美的追求和渴望是永无止境的。</p>
+<p>一开始建博客也只是想要有：带动态目录，代码块可复制、折叠展开的，能搜索文章内容方便找笔记，仅此而已😂。然后不知怎地就变成故事书了。</p>
+<p>记录一下美化和魔改历程，一是防止玩崩版本升级找不到回家的路，二是给新建博客想美化的朋友一点参考。</p>
+<h2 id="参考的博客">参考的博客</h2>
+<p>通过友链查看了较多伙伴的博客，会点CSS、html、JS真的做的很漂亮，有空我也学一下逃:)</p>
+<p>简约大气：</p>
+<ul>
+<li>Heo老师：<a target="_blank" rel="noopener" href="https://blog.zhheo.com/">https://blog.zhheo.com/</a></li>
+</ul>
+<p>仿Heo老师的😂：</p>
+<ul>
+<li>realwds’s blog：<a target="_blank" rel="noopener" href="https://blog.realwds.com">https://blog.realwds.com</a></li>
+<li>MJ：<a target="_blank" rel="noopener" href="https://blog.justlovesmile.top">https://blog.justlovesmile.top</a></li>
+</ul>
+<p>虽说店长博客里有很多教程，但真的样式多了，给我的感觉比较花：</p>
+<ul>
+<li>店长：<a target="_blank" rel="noopener" href="https://akilar.top/">https://akilar.top/</a></li>
+</ul>
+<p>渐变色：</p>
+<ul>
+<li>小雨：<a target="_blank" rel="noopener" href="https://ranas.cn/%EF%BC%88%E7%99%BD%E5%BA%95%E5%AD%97%EF%BC%8C%E6%95%B4%E4%BD%93%E9%A3%8E%E6%A0%BC%E5%BE%88%E8%88%92%E9%80%82cute%EF%BC%89">https://ranas.cn/（白底字，整体风格很舒适cute）</a></li>
+<li>小嘉：<a target="_blank" rel="noopener" href="https://blog.imzjw.cn">https://blog.imzjw.cn</a></li>
+<li>Sianx：<a target="_blank" rel="noopener" href="https://sianx.com">https://sianx.com</a></li>
+</ul>
+<p>橙色调：</p>
+<ul>
+<li>小N同学：<a target="_blank" rel="noopener" href="https://www.nesxc.com/%EF%BC%88%E5%8A%A0%E6%B5%AE%E5%8A%A8%E5%8A%A8%E7%94%BB%E5%BE%88%E5%B7%B4%E9%80%82%EF%BC%89">https://www.nesxc.com/（加浮动动画很巴适）</a></li>
+<li>贰猹的小窝：<a target="_blank" rel="noopener" href="https://noionion.top/%EF%BC%88%E5%AD%97%E4%BD%93%E8%AE%A9%E6%88%91%E6%9C%89%E4%B8%80%E4%B8%A2%E4%B8%A2%E8%B4%B9%E5%8A%B2%EF%BC%89">https://noionion.top/（字体让我有一丢丢费劲）</a></li>
+</ul>
+<p>风格、整体调色好：</p>
+<ul>
+<li>Hassan：<a target="_blank" rel="noopener" href="https://hassanwong.top">https://hassanwong.top</a></li>
+</ul>
+<p>变化不大：</p>
+<ul>
+<li>
+<p>小冰：<a target="_blank" rel="noopener" href="https://zfe.one">https://zfe.one</a>（其实没怎么美化，但是大佬有很多插件😂）</p>
+</li>
+<li>
+<p>Eurkon：<a target="_blank" rel="noopener" href="https://blog.eurkon.com">https://blog.eurkon.com</a>（有访客统计、文章统计的教程）</p>
+</li>
+<li>
+<p>MuJin：<a target="_blank" rel="noopener" href="https://xiabor.com">https://xiabor.com</a></p>
+</li>
+</ul>
+<p>不主观感受，希望上面的小伙伴看到不要打我…</p>
+<h2 id="好文收藏一下">好文收藏一下</h2>
+<p>在主页隐藏文章：<a target="_blank" rel="noopener" href="https://youngwen.com/p/22099ef3.html">https://youngwen.com/p/22099ef3.html</a></p>
+<h2 id="To-Do-List">To Do List</h2>
+<p>文章数量多了之后加动态分类条</p>
+<p>洪哥的<a target="_blank" rel="noopener" href="https://blog.zhheo.com/p/bc61964d.html">Butterfly魔改：动态分类条，可以根据页面变化而改变的分类列表展示方式</a></p>
+<p>博客文章统计+访问统计：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.eurkon.com/categories/%E9%AD%94%E6%94%B9%E6%95%99%E7%A8%8B/">Eurkon博客</a></p>
+<p>缩短文章链接、SEO优化：</p>
+<p><a target="_blank" rel="noopener" href="https://plushine.cn/54808.html#hexo-git-backup">https://plushine.cn/54808.html#hexo-git-backup</a></p>
+<p>图床加速：</p>
+<p><a target="_blank" rel="noopener" href="https://plushine.cn/3726.html#%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC%E6%95%99%E7%A8%8B%EF%BC%8C%E5%89%8D%E5%BE%80%E8%BF%99%E9%87%8C%E6%9F%A5%E7%9C%8B">https://plushine.cn/3726.html#最新版本教程，前往这里查看</a></p>
+<p>To do:</p>
+<p>小雨的域名绑定：</p>
+<p><a target="_blank" rel="noopener" href="https://ranas.cn/2021/07/14/HexoAbout/">Hexo博客搭建的从无到有</a></p>
+<p>灰鸿的SEO优化：</p>
+<p><a target="_blank" rel="noopener" href="https://space.greyh.cn/posts/7/#%E5%89%8D%E8%A8%80">hexo 博客的高级 SEO 优化</a></p>
+<p>呆逼的网站访问速度优化：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.keepdai.cn/youhua.html">网站访问速度优化</a></p>
+<h2 id="主题源码修改">主题源码修改</h2>
+<h3 id="版权信息美化">版权信息美化</h3>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://www.nesxc.com/post/hexocc.html">Nesxc 的 butterfly 版权美化教程</a></p>
+</blockquote>
+<p>修改了：</p>
+<p><code>[root]\themes\butterfly\layout\includes\post\post-copyright.pug</code></p>
+<p><code>[root]\themes\butterfly\source\css\_layout\post.styl</code></p>
+<p>自定义了<code>copyright.css</code>文件于：</p>
+<p><code>[root]\themes\butterfly\source\css</code></p>
+<h3 id="版权文字改动">版权文字改动</h3>
+<p><code>themes\butterfly\layout\includes\post\post-copyright.pug</code>修改了文字，添加了emoji表情</p>
+<h3 id="今日诗词侧边栏小组件">今日诗词侧边栏小组件</h3>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.zhheo.com/p/2ed9d8dd.html">洪哥的Butterfly美化：今日诗词侧边栏小组件，中国传统诗词文化</a></p>
+</blockquote>
+<p>新建了文件：</p>
+<p><code>themes/butterfly/layout/includes/widget/card_poem.pug</code></p>
+<p>page页面选择插入在公告后，post页面插在author后，顺便把公告注释掉了</p>
+<p><code>themes/butterfly/layout/includes/widget/index.pug</code></p>
+<p>主题配置中注入了洪哥的两个CSS（已下载到本地）</p>
+<h3 id="标签上下标">标签上下标</h3>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.eurkon.com/post/6687849c.html">Butterfly 标签云增加文章数上下标</a></p>
+</blockquote>
+<h3 id="站点统计加了emoji表情">站点统计加了emoji表情</h3>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://sianx.com/posts/c32b6e4c/#%E7%BD%91%E7%AB%99%E8%B5%84%E8%AE%AFemoji%E8%A1%A8%E6%83%85">https://sianx.com/posts/c32b6e4c/#网站资讯emoji表情</a></p>
+</blockquote>
+<p>修改了:<code>themes/butterfly/languages/zh-CN.yml</code></p>
+<p>加了emoji和一些文字</p>
+<h3 id="导航栏居中（去除了）">导航栏居中（去除了）</h3>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://sianx.com/posts/c32b6e4c/#%E5%AF%BC%E8%88%AA%E6%A0%8F">https://sianx.com/posts/c32b6e4c/#导航栏</a></p>
+</blockquote>
+<h3 id="动态分类条（去除了）">动态分类条（去除了）</h3>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.zhheo.com/p/bc61964d.html">https://blog.zhheo.com/p/bc61964d.html</a></p>
+</blockquote>
+<p>只在子分类添加，因为首页与轮播在视觉上不合逻辑</p>
+<h3 id="首页隐藏文章（去除了）">首页隐藏文章（去除了）</h3>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.zhheo.com/p/451ff5e9.html">https://blog.zhheo.com/p/451ff5e9.html</a></p>
+</blockquote>
+<h2 id="非主题源码修改">非主题源码修改</h2>
+<h3 id="鼠标样式，一图流（去除了）">鼠标样式，一图流（去除了）</h3>
+<blockquote>
+<p>参考：店长<a target="_blank" rel="noopener" href="https://akilar.top/posts/ebf20e02/">Custom Beautify</a>中的<code>鼠标指针样式替换</code>和<code>透明度修改（含一图流方案）</code></p>
+</blockquote>
+<p>新增文件<code>custom.css</code>于</p>
+<p>[Blogroot]\themes\butterfly\source\css</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*****************************************鼠标*****************************************/</span></span><br><span class="line"><span class="comment">/* 全局默认鼠标指针 */</span></span><br><span class="line"><span class="selector-tag">body</span>,</span><br><span class="line"><span class="selector-tag">html</span>&#123;</span><br><span class="line">  <span class="attribute">cursor</span>: <span class="built_in">url</span>(<span class="string">&#x27;/img/cursor/default.cur&#x27;</span>),auto <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 悬停图片时的鼠标指针 */</span></span><br><span class="line"><span class="selector-tag">img</span>&#123;</span><br><span class="line">  <span class="attribute">cursor</span>: <span class="built_in">url</span>(<span class="string">&#x27;/img/cursor/pointer.cur&#x27;</span>),auto <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 选择链接标签时的鼠标指针 */</span></span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">    <span class="attribute">cursor</span>: <span class="built_in">url</span>(<span class="string">&#x27;/img/cursor/pointer.cur&#x27;</span>),auto;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 选中输入框时的鼠标指针 */</span></span><br><span class="line"><span class="selector-tag">input</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">    <span class="attribute">cursor</span>: <span class="built_in">url</span>(<span class="string">&#x27;/img/cursor/default.cur&#x27;</span>),auto;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 悬停按钮时的鼠标指针 */</span></span><br><span class="line"><span class="selector-tag">button</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">    <span class="attribute">cursor</span>: <span class="built_in">url</span>(<span class="string">&#x27;/img/cursor/pointer.cur&#x27;</span>),auto;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 悬停列表标签时的鼠标指针 */</span></span><br><span class="line"><span class="selector-tag">i</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">    <span class="attribute">cursor</span>: <span class="built_in">url</span>(<span class="string">&#x27;/img/cursor/pointer.cur&#x27;</span>),auto;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 悬停页脚链接标签（例如页脚徽标）时的鼠标指针 */</span></span><br><span class="line"><span class="selector-id">#footer-wrap</span> <span class="selector-tag">a</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">      <span class="attribute">cursor</span>: <span class="built_in">url</span>(<span class="string">&#x27;/img/cursor/pointer.cur&#x27;</span>),auto;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 悬停页码时的鼠标指针 */</span></span><br><span class="line"><span class="selector-id">#pagination</span> <span class="selector-class">.page-number</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">      <span class="attribute">cursor</span>: <span class="built_in">url</span>(<span class="string">&#x27;/img/cursor/pointer.cur&#x27;</span>),auto;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 悬停菜单栏时的鼠标指针 */</span></span><br><span class="line"><span class="selector-id">#nav</span> <span class="selector-class">.site-page</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">      <span class="attribute">cursor</span>: <span class="built_in">url</span>(<span class="string">&#x27;/img/cursor/pointer.cur&#x27;</span>),auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后在butterfly中的inject中引用了</p>
+<hr>
+<p>目前自定义CSS的全部代码：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*****************************************鼠标*****************************************/</span></span><br><span class="line"><span class="comment">/* 全局默认鼠标指针 */</span></span><br><span class="line"><span class="selector-tag">body</span>,</span><br><span class="line"><span class="selector-tag">html</span>&#123;</span><br><span class="line">  <span class="attribute">cursor</span>: <span class="built_in">url</span>(<span class="string">&#x27;/img/cursor/default.cur&#x27;</span>),auto <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 悬停图片时的鼠标指针 */</span></span><br><span class="line"><span class="selector-tag">img</span>&#123;</span><br><span class="line">  <span class="attribute">cursor</span>: <span class="built_in">url</span>(<span class="string">&#x27;/img/cursor/pointer.cur&#x27;</span>),auto <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 选择链接标签时的鼠标指针 */</span></span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">    <span class="attribute">cursor</span>: <span class="built_in">url</span>(<span class="string">&#x27;/img/cursor/pointer.cur&#x27;</span>),auto;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 选中输入框时的鼠标指针 */</span></span><br><span class="line"><span class="selector-tag">input</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">    <span class="attribute">cursor</span>: <span class="built_in">url</span>(<span class="string">&#x27;/img/cursor/default.cur&#x27;</span>),auto;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 悬停按钮时的鼠标指针 */</span></span><br><span class="line"><span class="selector-tag">button</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">    <span class="attribute">cursor</span>: <span class="built_in">url</span>(<span class="string">&#x27;/img/cursor/pointer.cur&#x27;</span>),auto;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 悬停列表标签时的鼠标指针 */</span></span><br><span class="line"><span class="selector-tag">i</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">    <span class="attribute">cursor</span>: <span class="built_in">url</span>(<span class="string">&#x27;/img/cursor/pointer.cur&#x27;</span>),auto;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 悬停页脚链接标签（例如页脚徽标）时的鼠标指针 */</span></span><br><span class="line"><span class="selector-id">#footer-wrap</span> <span class="selector-tag">a</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">      <span class="attribute">cursor</span>: <span class="built_in">url</span>(<span class="string">&#x27;/img/cursor/pointer.cur&#x27;</span>),auto;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 悬停页码时的鼠标指针 */</span></span><br><span class="line"><span class="selector-id">#pagination</span> <span class="selector-class">.page-number</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">      <span class="attribute">cursor</span>: <span class="built_in">url</span>(<span class="string">&#x27;/img/cursor/pointer.cur&#x27;</span>),auto;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 悬停菜单栏时的鼠标指针 */</span></span><br><span class="line"><span class="selector-id">#nav</span> <span class="selector-class">.site-page</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">      <span class="attribute">cursor</span>: <span class="built_in">url</span>(<span class="string">&#x27;/img/cursor/pointer.cur&#x27;</span>),auto;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*****************************************圆角*****************************************/</span></span><br><span class="line"><span class="comment">/* 修改图片圆角 */</span></span><br><span class="line"><span class="selector-tag">img</span><span class="selector-attr">[src*=<span class="string">&quot;#img-radius&quot;</span>]</span> &#123;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">9px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 侧边栏圆角 */</span></span><br><span class="line"><span class="selector-id">#aside-content</span> <span class="selector-class">.card-widget</span> &#123;</span><br><span class="line"><span class="attribute">border-radius</span>: <span class="number">18px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 文章页圆角 */</span></span><br><span class="line"><span class="selector-class">.layout</span>&gt;<span class="selector-tag">div</span><span class="selector-pseudo">:first</span>-child<span class="selector-pseudo">:not</span>(<span class="selector-class">.recent-posts</span>) &#123;</span><br><span class="line"><span class="attribute">border-radius</span>: <span class="number">18px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 双栏卡片圆角 */</span></span><br><span class="line"><span class="selector-id">#recent-posts</span>&gt;<span class="selector-class">.recent-post-item</span> &#123;</span><br><span class="line"><span class="attribute">border-radius</span>: <span class="number">18px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* github按钮圆角 */</span></span><br><span class="line"><span class="selector-id">#card-info-btn</span>&#123;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">25px</span>;</span><br><span class="line">  <span class="attribute">overflow</span>: hidden&#125;</span><br><span class="line"><span class="selector-id">#card-info-btn</span>:before&#123;</span><br><span class="line">  border-radius: <span class="number">18px</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 右侧小按钮圆角 */</span></span><br><span class="line"><span class="selector-id">#rightside</span>&gt;<span class="selector-tag">div</span>&gt;<span class="selector-tag">button</span>,<span class="selector-id">#to_comment</span> &#123;</span><br><span class="line">  <span class="attribute">margin-right</span>: <span class="number">4px</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">5px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 翻页圆角 */</span></span><br><span class="line"><span class="selector-id">#pagination</span> <span class="selector-tag">a</span><span class="selector-class">.extend</span>,</span><br><span class="line"><span class="selector-id">#pagination</span> <span class="selector-class">.page-number</span>,</span><br><span class="line"><span class="selector-id">#pagination</span> <span class="selector-tag">span</span> &#123;</span><br><span class="line">	<span class="attribute">color</span>: <span class="built_in">var</span>(--font-color);</span><br><span class="line">	<span class="attribute">background-color</span>: <span class="built_in">var</span>(--card-bg);</span><br><span class="line">	<span class="attribute">border-radius</span>: <span class="number">8px</span>;</span><br><span class="line">	<span class="attribute">height</span>: <span class="number">1.6rem</span>;</span><br><span class="line">	<span class="attribute">text-align</span>: center;</span><br><span class="line">	<span class="attribute">line-height</span>: <span class="number">1.6rem</span>;</span><br><span class="line">	<span class="attribute">display</span>: inline-block;</span><br><span class="line">	<span class="attribute">min-width</span>: <span class="number">1.6rem</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 目录圆角 */</span></span><br><span class="line"><span class="selector-id">#aside-content</span> <span class="selector-id">#card-toc</span> <span class="selector-class">.toc-content</span> <span class="selector-class">.toc-link</span><span class="selector-class">.active</span> &#123;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">8px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 文章标题居中 */</span></span><br><span class="line"><span class="selector-id">#page</span> <span class="selector-tag">h1</span><span class="selector-class">.page-title</span>,<span class="selector-id">#post</span>&gt;<span class="selector-id">#post-info</span> &#123;</span><br><span class="line">    <span class="attribute">text-align</span>: center</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 导航栏置顶透明覆盖 */</span></span><br><span class="line"><span class="selector-id">#page-header</span><span class="selector-class">.not-top-img</span> <span class="selector-id">#nav</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>,<span class="number">0</span>);</span><br><span class="line">    -webkit-<span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">5px</span> <span class="number">6px</span> -<span class="number">5px</span> <span class="built_in">rgba</span>(<span class="number">133</span>,<span class="number">133</span>,<span class="number">133</span>,<span class="number">0</span>);</span><br><span class="line">    <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">5px</span> <span class="number">6px</span> -<span class="number">5px</span> <span class="built_in">rgba</span>(<span class="number">133</span>,<span class="number">133</span>,<span class="number">133</span>,<span class="number">0</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 导航栏非置顶透明覆盖 */</span></span><br><span class="line"><span class="selector-id">#page-header</span><span class="selector-class">.nav-fixed</span> <span class="selector-id">#nav</span> &#123;</span><br><span class="line"> <span class="attribute">background</span>: <span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>,.<span class="number">8</span>);</span><br><span class="line">    -webkit-<span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">5px</span> <span class="number">6px</span> -<span class="number">5px</span> <span class="built_in">rgba</span>(<span class="number">133</span>,<span class="number">133</span>,<span class="number">133</span>,.<span class="number">6</span>);</span><br><span class="line">    <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">5px</span> <span class="number">6px</span> -<span class="number">5px</span> <span class="built_in">rgba</span>(<span class="number">133</span>,<span class="number">133</span>,<span class="number">133</span>,.<span class="number">6</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*字体*/</span></span><br><span class="line"><span class="keyword">@font-face</span>&#123;</span><br><span class="line">    <span class="attribute">font-family</span>:<span class="string">&#x27;aqqxs&#x27;</span> ;  <span class="comment">/* 字体名自定义即可 */</span></span><br><span class="line">    <span class="attribute">src</span>:<span class="built_in">url</span>(<span class="string">&#x27;/fonts/ZhuZiAWan.woff2&#x27;</span>); <span class="comment">/* 字体文件路径 */</span></span><br><span class="line">    <span class="attribute">font-display</span> : swap;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="selector-tag">a</span><span class="selector-class">.article-title</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&#x27;aqqxs&#x27;</span>, sans-serif;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.content</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&#x27;aqqxs&#x27;</span>, sans-serif;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.article-meta-wrap</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&#x27;aqqxs&#x27;</span>, sans-serif;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-tag">div</span><span class="selector-id">#bbtalk</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&#x27;aqqxs&#x27;</span>, sans-serif;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-tag">a</span><span class="selector-id">#site-name</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&#x27;aqqxs&#x27;</span>, sans-serif;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.card-info-avatar</span><span class="selector-class">.is-center</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&#x27;aqqxs&#x27;</span>, sans-serif;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-tag">p</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&#x27;aqqxs&#x27;</span>, sans-serif;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.card-widget</span><span class="selector-class">.card-tags</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&#x27;aqqxs&#x27;</span>, sans-serif;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.card-widget</span><span class="selector-class">.card-webinfo</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&#x27;aqqxs&#x27;</span>, sans-serif;</span><br><span class="line">  &#125;</span><br><span class="line">  element<span class="selector-class">.style</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&#x27;aqqxs&#x27;</span>, sans-serif;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.aplayer-music</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&#x27;aqqxs&#x27;</span>, sans-serif;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-tag">div</span><span class="selector-id">#hopelight_plus_menu</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&#x27;aqqxs&#x27;</span>, sans-serif;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-tag">div</span><span class="selector-id">#menus</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&#x27;aqqxs&#x27;</span>, sans-serif;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-tag">div</span><span class="selector-id">#local-search-title</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&#x27;aqqxs&#x27;</span>, sans-serif;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-tag">input</span><span class="selector-class">.local-search-box--input</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&#x27;aqqxs&#x27;</span>, sans-serif;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-tag">div</span><span class="selector-id">#post-info</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&#x27;aqqxs&#x27;</span>, sans-serif;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.post-copyright</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&#x27;aqqxs&#x27;</span>, sans-serif;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.sticky_layout</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&#x27;aqqxs&#x27;</span>, sans-serif;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.search-dialog</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&#x27;aqqxs&#x27;</span>, sans-serif;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-tag">main</span><span class="selector-id">#content-inner</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&#x27;aqqxs&#x27;</span>, sans-serif;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-tag">p</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&#x27;aqqxs&#x27;</span>, sans-serif <span class="meta">!important</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-id">#footer-wrap</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&#x27;aqqxs&#x27;</span>, sans-serif;    <span class="comment">/* 手机侧边栏 */</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-id">#sidebar</span> <span class="selector-id">#sidebar-menus</span><span class="selector-class">.open</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&#x27;aqqxs&#x27;</span>, sans-serif;    <span class="comment">/* 页脚 */</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-id">#search-button</span>&#123;</span><br><span class="line">        <span class="attribute">font-family</span>: <span class="string">&#x27;aqqxs&#x27;</span>, sans-serif; <span class="comment">/* 搜索 */</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>圆角没适配好，首页图片和另一边奇奇怪怪的</p>
+<hr>
+<h3 id="页脚添加github徽标（去除了）">页脚添加github徽标（去除了）</h3>
+<blockquote>
+<p>参考：店长的<a target="_blank" rel="noopener" href="https://akilar.top/posts/e87ad7f8/">博客添加github徽标方案-插件化写法</a></p>
+</blockquote>
+<h3 id="首页轮播文章（去除了）">首页轮播文章（去除了）</h3>
+<blockquote>
+<p>参考：店长的<a target="_blank" rel="noopener" href="https://akilar.top/posts/8e1264d1/">基于 swiper 的首页置顶轮播图</a></p>
+</blockquote>
+<p>插件版</p>
+<h3 id="基于-Butterfly-的外挂标签引入">基于 Butterfly 的外挂标签引入</h3>
+<blockquote>
+<p>参考：店长的基于 <a target="_blank" rel="noopener" href="https://akilar.top/posts/615e2dec/">Butterfly 的外挂标签引入</a></p>
+<p>外挂标签使用说法也是通篇文章</p>
+</blockquote>
+<p>插件安装版</p>
+<h3 id="朋友圈3-0（去除了）">朋友圈3.0（去除了）</h3>
+<blockquote>
+<p>店长:<a target="_blank" rel="noopener" href="https://akilar.top/posts/62f13a97/">hexo-filter-fcircle</a></p>
+</blockquote>
+<h3 id="添加浮动特效（去除了）">添加浮动特效（去除了）</h3>
+<blockquote>
+<p>店长：<a target="_blank" rel="noopener" href="https://akilar.top/posts/abab51cf/">https://akilar.top/posts/abab51cf/</a></p>
+</blockquote>
+<p>插件化版本</p>
+<p>butterfly主题配置中增加：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#wowjs动画</span></span><br><span class="line"><span class="attr">wowjs:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span> <span class="comment">#控制动画开关。true是打开，false是关闭</span></span><br><span class="line">  <span class="attr">priority:</span> <span class="number">10</span> <span class="comment">#过滤器优先级</span></span><br><span class="line">  <span class="attr">mobile:</span> <span class="literal">false</span> <span class="comment">#移动端是否启用，默认移动端禁用</span></span><br><span class="line">  <span class="attr">animateitem:</span></span><br><span class="line">    <span class="comment">#首页文章卡片</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">class:</span> <span class="string">recent-post-item</span> <span class="comment">#必填项，需要添加动画的元素的class</span></span><br><span class="line">      <span class="attr">style:</span> <span class="string">animate__zoomIn</span> <span class="comment">#必填项，需要添加的动画</span></span><br><span class="line">      <span class="attr">duration:</span> <span class="string">1s</span> <span class="comment">#选填项，动画持续时间，单位可以是ms也可以是s。例如3s，700ms。</span></span><br><span class="line">      <span class="attr">delay:</span> <span class="string">100ms</span> <span class="comment">#选填项，动画开始的延迟时间，单位可以是ms也可以是s。例如3s，700ms。</span></span><br><span class="line">      <span class="attr">offset:</span> <span class="number">100</span> <span class="comment">#选填项，开始动画的距离（相对浏览器底部）</span></span><br><span class="line">      <span class="attr">iteration:</span> <span class="number">1</span> <span class="comment">#选填项，动画重复的次数</span></span><br><span class="line">    <span class="comment">#侧栏卡片</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">class:</span> <span class="string">card-widget</span></span><br><span class="line">      <span class="attr">style:</span> <span class="string">animate__backInUp</span></span><br><span class="line">      <span class="attr">duration:</span> <span class="string">1s</span> <span class="comment">#选填项，动画持续时间，单位可以是ms也可以是s。例如3s，700ms。</span></span><br><span class="line">      <span class="attr">delay:</span> <span class="string">100ms</span> <span class="comment">#选填项，动画开始的延迟时间，单位可以是ms也可以是s。例如3s，700ms。</span></span><br><span class="line">      <span class="attr">offset:</span> <span class="number">100</span> <span class="comment">#选填项，开始动画的距离（相对浏览器底部）</span></span><br><span class="line">      <span class="attr">iteration:</span> <span class="number">1</span> <span class="comment">#选填项，动画重复的次数</span></span><br></pre></td></tr></table></figure>
+<p>wowjs官方文档：<a target="_blank" rel="noopener" href="https://animate.style/">https://animate.style/</a></p>
+<h3 id="页面嵌入pdf（去除了）">页面嵌入pdf（去除了）</h3>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://www.freesion.com/article/21401006069/">https://www.freesion.com/article/21401006069/</a></p>
+</blockquote>
+<h3 id="文章永久固定连接">文章永久固定连接</h3>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://www.heson10.com/posts/31426.html">https://www.heson10.com/posts/31426.html</a></p>
+</blockquote>
+<h2 id="加速">加速</h2>
+<h3 id="jsd-github图床加速（jsd已被墙）">jsd+github图床加速（jsd已被墙）</h3>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://www.heson10.com/posts/18256.html">jsDelivr CDN加速Github仓库图片做博客图床 - 黑石博客 - Hexo博客 (heson10.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.heson10.com/posts/57815.html#GitHub">Coding Studio实现hexo的云环境部署 - 黑石博客 - Hexo博客 (heson10.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.antmoe.com/posts/e33d1c55/">https://www.antmoe.com/posts/e33d1c55/</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/a36e9c64361d">https://www.jianshu.com/p/a36e9c64361d</a></p>
+</blockquote>
+<p>图片无损压缩网站：<a target="_blank" rel="noopener" href="https://tinypng.com/">https://tinypng.com/</a></p>
+<p>有损压缩软件：Imagine（已下载）</p>
+<p>更多：</p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/19779256">https://www.zhihu.com/question/19779256</a></p>
+<p><a target="_blank" rel="noopener" href="https://imagecompressor.com/">https://imagecompressor.com/</a></p>
+<p><a target="_blank" rel="noopener" href="https://ezgif.com/png-to-webp/ezgif-6-e16bc772437e.png">https://ezgif.com/png-to-webp/ezgif-6-e16bc772437e.png</a></p>
+<hr>
+<p>持续美化中…😂</p>
+</article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>Butterfly主题美化和魔改记录</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="https://jyxyz.github.io/posts/2d6503ba.html">https://jyxyz.github.io/posts/2d6503ba.html</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a" style="display: inline-block;width: 120px"><h>博主✍</h><div class="post-copyright-cc-info"><h>阿耶</h></div></div><div class="post-copyright-c" style="display: inline-block;width: 120px"><h>本篇发布于📚</h><div class="post-copyright-cc-info"><h>2021-10-07</h></div></div><div class="post-copyright-u" style="display: inline-block;width: 120px"><h>本篇更新于🕝</h><div class="post-copyright-cc-info"><h>2022-02-02</h></div></div><div class="post-copyright-c" style="display: inline-block;width: 120px"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY 4.0" href="https://creativecommons.org/licenses/by/4.0/deed.zh">CC BY 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Hexo/">Hexo</a><a class="post-meta__tags" href="/tags/Butterfly/">Butterfly</a><a class="post-meta__tags" href="/tags/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/">博客美化</a></div><div class="post_share"><div class="social-share" data-image="/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq,qzone"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 要饭码</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/reward/wechat.png" target="_blank"><img class="post-qr-code-img" src="/img/reward/wechat.png" alt="wechat饿饿"/></a><div class="post-qr-code-desc">wechat饿饿</div></li><li class="reward-item"><a href="/img/reward/alipay.png" target="_blank"><img class="post-qr-code-img" src="/img/reward/alipay.png" alt="alipay饿饿"/></a><div class="post-qr-code-desc">alipay饿饿</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/97187543.html"><img class="prev-cover" src="/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">windows程序设计实例</div></div></a></div><div class="next-post pull-right"><a href="/posts/e8553cf2.html"><img class="next-cover" src="/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">PicGo+阿里云解决Typora图床问题</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E7%9A%84%E5%8D%9A%E5%AE%A2"><span class="toc-number">2.</span> <span class="toc-text">参考的博客</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A5%BD%E6%96%87%E6%94%B6%E8%97%8F%E4%B8%80%E4%B8%8B"><span class="toc-number">3.</span> <span class="toc-text">好文收藏一下</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#To-Do-List"><span class="toc-number">4.</span> <span class="toc-text">To Do List</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E9%A2%98%E6%BA%90%E7%A0%81%E4%BF%AE%E6%94%B9"><span class="toc-number">5.</span> <span class="toc-text">主题源码修改</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%88%E6%9D%83%E4%BF%A1%E6%81%AF%E7%BE%8E%E5%8C%96"><span class="toc-number">5.1.</span> <span class="toc-text">版权信息美化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%88%E6%9D%83%E6%96%87%E5%AD%97%E6%94%B9%E5%8A%A8"><span class="toc-number">5.2.</span> <span class="toc-text">版权文字改动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8A%E6%97%A5%E8%AF%97%E8%AF%8D%E4%BE%A7%E8%BE%B9%E6%A0%8F%E5%B0%8F%E7%BB%84%E4%BB%B6"><span class="toc-number">5.3.</span> <span class="toc-text">今日诗词侧边栏小组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E7%AD%BE%E4%B8%8A%E4%B8%8B%E6%A0%87"><span class="toc-number">5.4.</span> <span class="toc-text">标签上下标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AB%99%E7%82%B9%E7%BB%9F%E8%AE%A1%E5%8A%A0%E4%BA%86emoji%E8%A1%A8%E6%83%85"><span class="toc-number">5.5.</span> <span class="toc-text">站点统计加了emoji表情</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E8%88%AA%E6%A0%8F%E5%B1%85%E4%B8%AD%EF%BC%88%E5%8E%BB%E9%99%A4%E4%BA%86%EF%BC%89"><span class="toc-number">5.6.</span> <span class="toc-text">导航栏居中（去除了）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%88%86%E7%B1%BB%E6%9D%A1%EF%BC%88%E5%8E%BB%E9%99%A4%E4%BA%86%EF%BC%89"><span class="toc-number">5.7.</span> <span class="toc-text">动态分类条（去除了）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A6%96%E9%A1%B5%E9%9A%90%E8%97%8F%E6%96%87%E7%AB%A0%EF%BC%88%E5%8E%BB%E9%99%A4%E4%BA%86%EF%BC%89"><span class="toc-number">5.8.</span> <span class="toc-text">首页隐藏文章（去除了）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%9E%E4%B8%BB%E9%A2%98%E6%BA%90%E7%A0%81%E4%BF%AE%E6%94%B9"><span class="toc-number">6.</span> <span class="toc-text">非主题源码修改</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%BC%A0%E6%A0%87%E6%A0%B7%E5%BC%8F%EF%BC%8C%E4%B8%80%E5%9B%BE%E6%B5%81%EF%BC%88%E5%8E%BB%E9%99%A4%E4%BA%86%EF%BC%89"><span class="toc-number">6.1.</span> <span class="toc-text">鼠标样式，一图流（去除了）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B5%E8%84%9A%E6%B7%BB%E5%8A%A0github%E5%BE%BD%E6%A0%87%EF%BC%88%E5%8E%BB%E9%99%A4%E4%BA%86%EF%BC%89"><span class="toc-number">6.2.</span> <span class="toc-text">页脚添加github徽标（去除了）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A6%96%E9%A1%B5%E8%BD%AE%E6%92%AD%E6%96%87%E7%AB%A0%EF%BC%88%E5%8E%BB%E9%99%A4%E4%BA%86%EF%BC%89"><span class="toc-number">6.3.</span> <span class="toc-text">首页轮播文章（去除了）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E-Butterfly-%E7%9A%84%E5%A4%96%E6%8C%82%E6%A0%87%E7%AD%BE%E5%BC%95%E5%85%A5"><span class="toc-number">6.4.</span> <span class="toc-text">基于 Butterfly 的外挂标签引入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8B%E5%8F%8B%E5%9C%883-0%EF%BC%88%E5%8E%BB%E9%99%A4%E4%BA%86%EF%BC%89"><span class="toc-number">6.5.</span> <span class="toc-text">朋友圈3.0（去除了）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E6%B5%AE%E5%8A%A8%E7%89%B9%E6%95%88%EF%BC%88%E5%8E%BB%E9%99%A4%E4%BA%86%EF%BC%89"><span class="toc-number">6.6.</span> <span class="toc-text">添加浮动特效（去除了）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E5%B5%8C%E5%85%A5pdf%EF%BC%88%E5%8E%BB%E9%99%A4%E4%BA%86%EF%BC%89"><span class="toc-number">6.7.</span> <span class="toc-text">页面嵌入pdf（去除了）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E7%AB%A0%E6%B0%B8%E4%B9%85%E5%9B%BA%E5%AE%9A%E8%BF%9E%E6%8E%A5"><span class="toc-number">6.8.</span> <span class="toc-text">文章永久固定连接</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E9%80%9F"><span class="toc-number">7.</span> <span class="toc-text">加速</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#jsd-github%E5%9B%BE%E5%BA%8A%E5%8A%A0%E9%80%9F%EF%BC%88jsd%E5%B7%B2%E8%A2%AB%E5%A2%99%EF%BC%89"><span class="toc-number">7.1.</span> <span class="toc-text">jsd+github图床加速（jsd已被墙）</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">本地搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'acloudenv-3gdr1re432b1f469',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.vemoji)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    twikoo.getCommentsCount({
+      envId: 'acloudenv-3gdr1re432b1f469',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      document.getElementById('twikoo-count').innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>

@@ -1,0 +1,671 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>WIN32 API档案速查 | 一杯热牛奶</title><meta name="keywords" content="WIN32 API"><meta name="author" content="阿耶"><meta name="copyright" content="阿耶"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="记录常用win32 api，多查阅，无他唯手熟尔。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WIN32 API档案速查">
+<meta property="og:url" content="https://jyxyz.github.io/posts/57d48d90.html">
+<meta property="og:site_name" content="一杯热牛奶">
+<meta property="og:description" content="记录常用win32 api，多查阅，无他唯手熟尔。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jyxyz.github.io/img/default.jpg">
+<meta property="article:published_time" content="2021-10-11T06:58:09.000Z">
+<meta property="article:modified_time" content="2021-10-11T06:58:09.000Z">
+<meta property="article:author" content="阿耶">
+<meta property="article:tag" content="WIN32 API">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jyxyz.github.io/img/default.jpg"><link rel="shortcut icon" href="/img/portrait.png"><link rel="canonical" href="https://jyxyz.github.io/posts/57d48d90"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":270},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":200,"languages":{"author":"作者: 阿耶","link":"链接: ","source":"来源: 一杯热牛奶","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#BEE5D3","bgDark":"#BEE5D3","position":"bottom-right"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'WIN32 API档案速查',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-10-11 14:58:09'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/copyright.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/heoMainColor.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/poem.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.0.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/portrait.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">22</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">一杯热牛奶</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">WIN32 API档案速查</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-10-11T06:58:09.000Z" title="发表于 2021-10-11 14:58:09">2021-10-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-10-11T06:58:09.000Z" title="更新于 2021-10-11 14:58:09">2021-10-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Windows%E5%AE%89%E5%85%A8/">Windows安全</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Windows%E5%AE%89%E5%85%A8/%E7%BC%96%E7%A8%8B%E7%AF%87/">编程篇</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Windows%E5%AE%89%E5%85%A8/%E7%BC%96%E7%A8%8B%E7%AF%87/win-api/">win api</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>15分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="WIN32 API档案速查"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/posts/57d48d90.html#post-comment"><span id="twikoo-count"></span></a></span></div></div></div><article class="post-content" id="article-container"><p>[toc]</p>
+<h1>进程</h1>
+<h2 id="结构体STARTUPINFO">结构体STARTUPINFO</h2>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/processthreadsapi/ns-processthreadsapi-startupinfow">STARTUPINFOW structure (processthreadsapi.h)</a></p>
+</blockquote>
+<p>CreateProcess的in参数，定制新进程中窗口的大小、位置等属性</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">STARTUPINFO</span>&#123;</span></span><br><span class="line">  DWORD  cb;                <span class="comment">//结构体长度</span></span><br><span class="line">  LPWSTR lpReserved;        <span class="comment">//结构长度</span></span><br><span class="line">  LPWSTR lpDesktop;         <span class="comment">//保留</span></span><br><span class="line">  LPWSTR lpTitle;           <span class="comment">//指定桌面名称，保留</span></span><br><span class="line">  DWORD  dwX;               <span class="comment">//如果为控制台进程则为显示的标题</span></span><br><span class="line">  DWORD  dwY;               <span class="comment">//窗口横坐标</span></span><br><span class="line">  DWORD  dwXSize;           <span class="comment">//窗口纵坐标</span></span><br><span class="line">  DWORD  dwYSize;           <span class="comment">//窗口宽度</span></span><br><span class="line">  DWORD  dwXCountChars;     <span class="comment">//控制台窗口字符行数</span></span><br><span class="line">  DWORD  dwYCountChars;</span><br><span class="line">  DWORD  dwFillAttribute;   <span class="comment">//控制台窗口填充模式</span></span><br><span class="line">  DWORD  dwFlags;           <span class="comment">//创建标记</span></span><br><span class="line">  WORD   wShowWindow;       <span class="comment">//窗口显示标记，如同ShowWindow中的标记</span></span><br><span class="line">  WORD   cbReserved2;       <span class="comment">//保留参数</span></span><br><span class="line">  LPBYTE lpReserved2;       <span class="comment">//保留参数</span></span><br><span class="line">  HANDLE hStdInput;         <span class="comment">//标准输入句柄</span></span><br><span class="line">  HANDLE hStdOutput;        <span class="comment">//标准输出句柄</span></span><br><span class="line">  HANDLE hStdError;         <span class="comment">//标准错误句柄</span></span><br><span class="line">&#125; STARTUPINFO, *LPSTARTUPINFO;</span><br></pre></td></tr></table></figure>
+<h2 id="结构体PROCESS-INFORMATION">结构体PROCESS_INFORMATION</h2>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/processthreadsapi/ns-processthreadsapi-process_information">PROCESS_INFORMATION structure (processthreadsapi.h)</a></p>
+</blockquote>
+<p>CreateProcess的out参数，进程与线程的句柄和ID</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">PROCESS_INFORMATION</span> &#123;</span></span><br><span class="line">  HANDLE hProcess;          <span class="comment">//新建进程内核句柄</span></span><br><span class="line">  HANDLE hThread;           <span class="comment">//主线程内核句柄</span></span><br><span class="line">  DWORD  dwProcessId;       <span class="comment">//新建进程ID</span></span><br><span class="line">  DWORD  dwThreadId;        <span class="comment">//主线程ID</span></span><br><span class="line">&#125; PROCESS_INFORMATION, *PPROCESS_INFORMATION, *LPPROCESS_INFORMATION;</span><br></pre></td></tr></table></figure>
+<h2 id="CreateProcess">CreateProcess</h2>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-createprocessw">CreateProcessW function (processthreadsapi.h)</a></p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BOOL <span class="title">CreateProcess</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  LPCWSTR               lpApplicationName,      <span class="comment">//应用程序名称</span></span></span></span><br><span class="line"><span class="params"><span class="function">  LPWSTR                lpCommandLine,          <span class="comment">//命令行字符串</span></span></span></span><br><span class="line"><span class="params"><span class="function">  LPSECURITY_ATTRIBUTES lpProcessAttributes,    <span class="comment">//进程的安全属性</span></span></span></span><br><span class="line"><span class="params"><span class="function">  LPSECURITY_ATTRIBUTES lpThreadAttributes,     <span class="comment">//线程的安全属性</span></span></span></span><br><span class="line"><span class="params"><span class="function">  BOOL                  bInheritHandles,        <span class="comment">//是否继承父进程的属性</span></span></span></span><br><span class="line"><span class="params"><span class="function">  DWORD                 dwCreationFlags,        <span class="comment">//创建标志</span></span></span></span><br><span class="line"><span class="params"><span class="function">  LPVOID                lpEnvironment,          <span class="comment">//指向新的环境块的指针</span></span></span></span><br><span class="line"><span class="params"><span class="function">  LPCWSTR               lpCurrentDirectory,     <span class="comment">//指向当前目录名的指针</span></span></span></span><br><span class="line"><span class="params"><span class="function">  LPSTARTUPINFOW        lpStartupInfo,          <span class="comment">//传递给新进程的信息</span></span></span></span><br><span class="line"><span class="params"><span class="function">  LPPROCESS_INFORMATION lpProcessInformation    <span class="comment">//新进程返回的信息</span></span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
+<h2 id="CloseHandle">CloseHandle</h2>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/handleapi/nf-handleapi-closehandle">CloseHandle function (handleapi.h)</a></p>
+</blockquote>
+<p>Closes an open object handle.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BOOL <span class="title">CloseHandle</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  HANDLE hObject</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
+<h2 id="快照遍历">快照遍历</h2>
+<h3 id="CreateToolhelp32Snapshot">CreateToolhelp32Snapshot</h3>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/tlhelp32/nf-tlhelp32-createtoolhelp32snapshot">CreateToolhelp32Snapshot function (tlhelp32.h)</a></p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">HANDLE <span class="title">CreateToolhelp32Snapshot</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  DWORD dwFlags,</span></span></span><br><span class="line"><span class="params"><span class="function">  DWORD th32ProcessID</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
+<div class="tabs" id="test1"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#test1-1">zh-cn</button></li><li class="tab"><button type="button" data-href="#test1-2">en</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="test1-1"><p>对指定的进程、（或）进程使用的堆、模块、线程做一个快照</p>
+<p><code>[in]dwFlags</code></p>
+<p>指定获取的列表类型</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TH32CS_SNAPHEAPLIST</td>
+<td>枚举<u>th32ProcessID</u>参数指定的进程中的堆</td>
+</tr>
+<tr>
+<td>TH32CS_SNAPMODULE</td>
+<td>枚举<u>th32ProcessID</u>参数指定的进程中的模块</td>
+</tr>
+<tr>
+<td>TH32CS_SNAPPROCESS</td>
+<td>枚举系统范围内的进程，此时<u>th32ProcessID</u>被忽略</td>
+</tr>
+<tr>
+<td>TH32CS_SNAPTHREAD</td>
+<td>枚举系统范围内的线程，此时<u>th32ProcessID</u>被忽略</td>
+</tr>
+</tbody>
+</table>
+<p><code>[in]th32ProcessID</code></p>
+<p>进程ID，指定哪个进程，当获取系统进程列表或当前进程时取0</p>
+<p>返回值：</p>
+<ul>
+<li>调用成功，返回一个快照句柄</li>
+<li>调用失败，返回INVALID_HANDLE_VALUE</li>
+</ul><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="test1-2"><p>Takes a snapshot of the specified processes, as well as the heaps, modules, and threads used by these processes.</p>
+<p><strong>Parameters</strong></p>
+<p><code>[in] dwFlags</code></p>
+<p>The portions of the system to be included in the snapshot. This parameter can be one or more of the following values.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Value</th>
+<th style="text-align:left">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>TH32CS_INHERIT</strong>0x80000000</td>
+<td style="text-align:left">Indicates that the snapshot handle is to be inheritable.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>TH32CS_SNAPALL</strong></td>
+<td style="text-align:left">Includes all processes and threads in the system, plus the heaps and modules of the process specified in <em>th32ProcessID</em>. Equivalent to specifying the <strong>TH32CS_SNAPHEAPLIST</strong>, <strong>TH32CS_SNAPMODULE</strong>, <strong>TH32CS_SNAPPROCESS</strong>, and <strong>TH32CS_SNAPTHREAD</strong> values combined using an OR operation (‘|’).</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>TH32CS_SNAPHEAPLIST</strong>0x00000001</td>
+<td style="text-align:left">Includes all heaps of the process specified in <em>th32ProcessID</em> in the snapshot. To enumerate the heaps, see <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/desktop/api/tlhelp32/nf-tlhelp32-heap32listfirst">Heap32ListFirst</a>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>TH32CS_SNAPMODULE</strong>0x00000008</td>
+<td style="text-align:left">Includes all modules of the process specified in <em>th32ProcessID</em> in the snapshot. To enumerate the modules, see <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/desktop/api/tlhelp32/nf-tlhelp32-module32first">Module32First</a>. If the function fails with <strong>ERROR_BAD_LENGTH</strong>, retry the function until it succeeds.<strong>64-bit Windows:</strong> Using this flag in a 32-bit process includes the 32-bit modules of the process specified in <em>th32ProcessID</em>, while using it in a 64-bit process includes the 64-bit modules. To include the 32-bit modules of the process specified in <em>th32ProcessID</em> from a 64-bit process, use the <strong>TH32CS_SNAPMODULE32</strong> flag.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>TH32CS_SNAPMODULE32</strong>0x00000010</td>
+<td style="text-align:left">Includes all 32-bit modules of the process specified in <em>th32ProcessID</em> in the snapshot when called from a 64-bit process. This flag can be combined with <strong>TH32CS_SNAPMODULE</strong> or <strong>TH32CS_SNAPALL</strong>. If the function fails with <strong>ERROR_BAD_LENGTH</strong>, retry the function until it succeeds.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>TH32CS_SNAPPROCESS</strong>0x00000002</td>
+<td style="text-align:left">Includes all processes in the system in the snapshot. To enumerate the processes, see <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/desktop/api/tlhelp32/nf-tlhelp32-process32first">Process32First</a>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>TH32CS_SNAPTHREAD</strong>0x00000004</td>
+<td style="text-align:left">Includes all threads in the system in the snapshot. To enumerate the threads, see <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/desktop/api/tlhelp32/nf-tlhelp32-thread32first">Thread32First</a>.To identify the threads that belong to a specific process, compare its process identifier to the <strong>th32OwnerProcessID</strong> member of the <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/desktop/api/tlhelp32/ns-tlhelp32-threadentry32">THREADENTRY32</a> structure when enumerating the threads.</td>
+</tr>
+</tbody>
+</table>
+<p><code>[in] th32ProcessID</code></p>
+<p>The process identifier of the process to be included in the snapshot. This parameter can be zero to indicate the current process. This parameter is used when the <strong>TH32CS_SNAPHEAPLIST</strong>, <strong>TH32CS_SNAPMODULE</strong>, <strong>TH32CS_SNAPMODULE32</strong>, or <strong>TH32CS_SNAPALL</strong> value is specified. Otherwise, it is ignored and all processes are included in the snapshot.</p>
+<p>If the specified process is the Idle process or one of the CSRSS processes, this function fails and the last error code is <strong>ERROR_ACCESS_DENIED</strong> because their access restrictions prevent user-level code from opening them.</p>
+<p>If the specified process is a 64-bit process and the caller is a 32-bit process, this function fails and the last error code is <strong>ERROR_PARTIAL_COPY</strong> (299).</p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
+<h3 id="遍历进程">遍历进程</h3>
+<h4 id="结构体PROCESSENTRY32">结构体PROCESSENTRY32</h4>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/tlhelp32/ns-tlhelp32-processentry32">PROCESSENTRY32 structure (tlhelp32.h)</a></p>
+</blockquote>
+<p>Describes an entry from a list of the processes residing in the system address space when a snapshot was taken.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">tagPROCESSENTRY32</span> &#123;</span></span><br><span class="line">  DWORD     dwSize;               <span class="comment">//结构的长度，预先设置</span></span><br><span class="line">  DWORD     cntUsage;             <span class="comment">//进程的引用计数</span></span><br><span class="line">  DWORD     th32ProcessID;        <span class="comment">//进程ID</span></span><br><span class="line">  ULONG_PTR th32DefaultHeapID;    <span class="comment">//进程默认的堆</span></span><br><span class="line">  DWORD     th32ModuleID;         <span class="comment">//进程模块ID</span></span><br><span class="line">  DWORD     cntThreads;           <span class="comment">//进程创建的线程数</span></span><br><span class="line">  DWORD     th32ParentProcessID;  <span class="comment">//进程的父进程ID</span></span><br><span class="line">  LONG      pcPriClassBase;       <span class="comment">//进程创建的线程的基本优先级</span></span><br><span class="line">  DWORD     dwFlags;              <span class="comment">//内部使用</span></span><br><span class="line">  CHAR      szExeFile[MAX_PATH];  <span class="comment">//进程对应可执行文件名</span></span><br><span class="line">&#125; PROCESSENTRY32,*PROCESSENTRY32;</span><br></pre></td></tr></table></figure>
+<h4 id="Process32First">Process32First</h4>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/tlhelp32/nf-tlhelp32-process32first">Process32First function (tlhelp32.h)</a></p>
+</blockquote>
+<p>Retrieves information about the <strong>first</strong> process encountered in a system snapshot.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BOOL <span class="title">Process32First</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  HANDLE           hSnapshot,</span></span></span><br><span class="line"><span class="params"><span class="function">  LPPROCESSENTRY32 lppe</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>参数解析：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hSnapshot</td>
+<td>A handle to the snapshot returned from a previous call to the <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/desktop/api/tlhelp32/nf-tlhelp32-createtoolhelp32snapshot">CreateToolhelp32Snapshot</a> function.</td>
+</tr>
+<tr>
+<td>lppe</td>
+<td>A pointer to a <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/desktop/api/tlhelp32/ns-tlhelp32-processentry32">PROCESSENTRY32</a> structure.</td>
+</tr>
+</tbody>
+</table>
+<p>返回值：</p>
+<p>Returns <strong>TRUE</strong> if the first entry of the process list has been copied to the buffer or <strong>FALSE</strong> otherwise. The <strong>ERROR_NO_MORE_FILES</strong> error value is returned by the <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/desktop/api/errhandlingapi/nf-errhandlingapi-getlasterror">GetLastError</a> function if no processes exist or the snapshot does not contain process information.</p>
+<h4 id="Process32Next">Process32Next</h4>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/tlhelp32/nf-tlhelp32-process32next">Process32Next function (tlhelp32.h)</a></p>
+</blockquote>
+<p>Retrieves information about the <strong>next</strong> process recorded in a system snapshot.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BOOL <span class="title">Process32Next</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  HANDLE           hSnapshot,</span></span></span><br><span class="line"><span class="params"><span class="function">  LPPROCESSENTRY32 lppe</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>参数解析：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hSnapshot</td>
+<td>A handle to the snapshot returned from a previous call to the <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/desktop/api/tlhelp32/nf-tlhelp32-createtoolhelp32snapshot">CreateToolhelp32Snapshot</a> function.</td>
+</tr>
+<tr>
+<td>lppe</td>
+<td>A pointer to a <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/desktop/api/tlhelp32/ns-tlhelp32-processentry32">PROCESSENTRY32</a> <a target="_blank" rel="noopener" href="http://structure.It">structure.It</a> contains process information such as the name of the executable file, the process identifier, and the process identifier of the parent process.</td>
+</tr>
+</tbody>
+</table>
+<p>返回值：</p>
+<p>Returns <strong>TRUE</strong> if the first entry of the process list has been copied to the buffer or <strong>FALSE</strong> otherwise. The <strong>ERROR_NO_MORE_FILES</strong> error value is returned by the <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/desktop/api/errhandlingapi/nf-errhandlingapi-getlasterror">GetLastError</a> function if no processes exist or the snapshot does not contain process information.</p>
+<h3 id="遍历进程使用的模块">遍历进程使用的模块</h3>
+<h4 id="结构体MODULEENTRY32">结构体MODULEENTRY32</h4>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/tlhelp32/ns-tlhelp32-moduleentry32">MODULEENTRY32 structure (tlhelp32.h)</a></p>
+</blockquote>
+<p>Describes an entry from a list of the modules belonging to the specified process.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">tagMODULEENTRY32</span> &#123;</span></span><br><span class="line">  DWORD   dwSize;</span><br><span class="line">  DWORD   th32ModuleID;</span><br><span class="line">  DWORD   th32ProcessID;</span><br><span class="line">  DWORD   GlblcntUsage;</span><br><span class="line">  DWORD   ProccntUsage;</span><br><span class="line">  BYTE    *modBaseAddr;</span><br><span class="line">  DWORD   modBaseSize;</span><br><span class="line">  HMODULE hModule;</span><br><span class="line">  <span class="keyword">char</span>    szModule[MAX_MODULE_NAME32 + <span class="number">1</span>];</span><br><span class="line">  <span class="keyword">char</span>    szExePath[MAX_PATH];</span><br><span class="line">&#125; MODULEENTRY32;</span><br></pre></td></tr></table></figure>
+<h4 id="Module32First">Module32First</h4>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/tlhelp32/nf-tlhelp32-module32first">Module32First function (tlhelp32.h)</a></p>
+</blockquote>
+<p>Retrieves information about the first module associated with a process.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BOOL <span class="title">Module32First</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  [in]      HANDLE          hSnapshot,</span></span></span><br><span class="line"><span class="params"><span class="function">  [in, out] LPMODULEENTRY32 lpme</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
+<h4 id="Module32Next">Module32Next</h4>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/tlhelp32/nf-tlhelp32-module32next">Module32Next function (tlhelp32.h)</a></p>
+</blockquote>
+<p>Retrieves information about the next module associated with a process or thread.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BOOL <span class="title">Module32Next</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  [in]  HANDLE          hSnapshot,</span></span></span><br><span class="line"><span class="params"><span class="function">  [out] LPMODULEENTRY32 lpme</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
+<h2 id="ExitProcess">ExitProcess</h2>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-exitprocess">ExitProcess function (processthreadsapi.h)</a></p>
+</blockquote>
+<p>Ends the calling process and all its threads.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ExitProcess</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  UINT uExitCode</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>参数解析：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uExitCode</td>
+<td>The exit code for the process and all threads.</td>
+</tr>
+</tbody>
+</table>
+<p>uExitCode参数列表：<br>
+0表示正常退出，其他数字有其他消息的含义</p>
+<h2 id="OpenProcess">OpenProcess</h2>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-openprocess">OpenProcess function (processthreadsapi.h)</a></p>
+</blockquote>
+<p>Opens an existing local process object.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">HANDLE <span class="title">OpenProcess</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  DWORD dwDesiredAccess,</span></span></span><br><span class="line"><span class="params"><span class="function">  BOOL  bInheritHandle,</span></span></span><br><span class="line"><span class="params"><span class="function">  DWORD dwProcessId</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
+<h2 id="TerminateProcess">TerminateProcess</h2>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-terminateprocess">TerminateProcess function (processthreadsapi.h)</a></p>
+</blockquote>
+<p>Terminates the specified process and all of its threads.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BOOL <span class="title">TerminateProcess</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  HANDLE hProcess,</span></span></span><br><span class="line"><span class="params"><span class="function">  UINT   uExitCode</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
+<h2 id="CreateMutex">CreateMutex</h2>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/synchapi/nf-synchapi-createmutexw">CreateMutexW function (synchapi.h)</a></p>
+</blockquote>
+<p>Creates or opens a named or unnamed mutex object.</p>
+<p>创建或打开一个已命名或未命名的互斥对象。</p>
+<p>To specify an access mask for the object, use the <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/desktop/api/synchapi/nf-synchapi-createmutexexa">CreateMutexEx</a> function.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">HANDLE <span class="title">CreateMutexW</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  [in, optional] LPSECURITY_ATTRIBUTES lpMutexAttributes,</span></span></span><br><span class="line"><span class="params"><span class="function">  [in]           BOOL                  bInitialOwner,</span></span></span><br><span class="line"><span class="params"><span class="function">  [in, optional] LPCWSTR               lpName</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
+<h1>线程</h1>
+<h2 id="结构体SECURITY-ATTRIBUTES">结构体SECURITY_ATTRIBUTES</h2>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/previous-versions/windows/desktop/legacy/aa379560(v=vs.85)">SECURITY_ATTRIBUTES structure</a></p>
+</blockquote>
+<p>The <strong>SECURITY_ATTRIBUTES</strong> structure contains the <a target="_blank" rel="noopener" href="https://msdn.microsoft.com/en-us/library/ms721625(v=vs.85)"><em>security descriptor</em></a> for an object and specifies whether the handle retrieved by specifying this structure is inheritable. This structure provides security settings for objects created by various functions, such as <a target="_blank" rel="noopener" href="https://msdn.microsoft.com/en-us/library/aa363858(v=vs.85)"><strong>CreateFile</strong></a>, <a target="_blank" rel="noopener" href="https://msdn.microsoft.com/en-us/library/aa365152(v=vs.85)"><strong>CreatePipe</strong></a>, <a target="_blank" rel="noopener" href="https://msdn.microsoft.com/en-us/library/ms682425(v=vs.85)"><strong>CreateProcess</strong></a>, <a target="_blank" rel="noopener" href="https://msdn.microsoft.com/en-us/library/ms724844(v=vs.85)"><strong>RegCreateKeyEx</strong></a>, or <a target="_blank" rel="noopener" href="https://msdn.microsoft.com/en-us/library/ms724919(v=vs.85)"><strong>RegSaveKeyEx</strong></a>.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">SECURITY_ATTRIBUTES</span> &#123;</span></span><br><span class="line">  DWORD  nLength;</span><br><span class="line">  LPVOID lpSecurityDescriptor;</span><br><span class="line">  BOOL   bInheritHandle;</span><br><span class="line">&#125; SECURITY_ATTRIBUTES, *PSECURITY_ATTRIBUTES, *LPSECURITY_ATTRIBUTES;</span><br></pre></td></tr></table></figure>
+<h2 id="CreateThread">CreateThread</h2>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-createthread">CreateThread function (processthreadsapi.h)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/believe_s/article/details/82623531?spm=1001.2014.3001.5501">CreateThread函数-CSDN现有的翻译</a></p>
+</blockquote>
+<p>Creates a thread to execute within the virtual address space of the calling process.</p>
+<p>To create a thread that runs in the virtual address space of another process, use the <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/desktop/api/processthreadsapi/nf-processthreadsapi-createremotethread">CreateRemoteThread</a> function.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">HANDLE <span class="title">CreateThread</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  [in, optional]  LPSECURITY_ATTRIBUTES   lpThreadAttributes,   <span class="comment">//线程安全性</span></span></span></span><br><span class="line"><span class="params"><span class="function">  [in]            SIZE_T                  dwStackSize,          <span class="comment">//指定线程堆栈大小</span></span></span></span><br><span class="line"><span class="params"><span class="function">  [in]            LPTHREAD_START_ROUTINE  lpStartAddress,       <span class="comment">//线程回调函数地址</span></span></span></span><br><span class="line"><span class="params"><span class="function">  [in, optional]  __drv_aliasesMem LPVOID lpParameter,          <span class="comment">//传递给线程函数的参数</span></span></span></span><br><span class="line"><span class="params"><span class="function">  [in]            DWORD                   dwCreationFlags,      <span class="comment">//指定线程创建后是否立即启动</span></span></span></span><br><span class="line"><span class="params"><span class="function">  [out, optional] LPDWORD                 lpThreadId            <span class="comment">//用于取得内核给新线程分配的ID号</span></span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
+<p><strong>参数</strong></p>
+<ul>
+<li>
+<p>lpThreadAttributes：一个指向SECURITY_ATTRIBUTES结构的指针，如果需要默认安全属性，传递NULL，如果希望此线程对象句柄可以被子进程继承的话，必须设定一个SECURITY_ATTRIBUTES结构。将它的binheritHandle成员初始化为TRUE。如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SECURITY_ATTRIBUTES sa;</span><br><span class="line">sa.nLength=<span class="built_in"><span class="keyword">sizeof</span></span>(sa);</span><br><span class="line">sa.lpSecurityDescriptor=<span class="literal">NULL</span>;</span><br><span class="line">sa.blnheritHandle=TRUE;<span class="comment">//使CreateThread返回的句柄可以被继承</span></span><br><span class="line">HANDLE h=::<span class="built_in">CreateThread</span>(&amp;sa,......);<span class="comment">//句柄h可以被子进程继承</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>dwCreationFlags</strong></p>
+<p>控制线程创建的标志。</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>该线程在创建后立即运行</td>
+</tr>
+<tr>
+<td>CREATE_SUSPENDEDs 0x00000004</td>
+<td>线程是在挂起状态下创建的，并且在<a target="_blank" rel="noopener" href="https://msdn.microsoft.com/ffc4e474-635b-4bf7-a68f-073899fb3fde">调用ResumeThread</a>函数之前不会运行 。</td>
+</tr>
+<tr>
+<td>STACK_SIZE_PARAM_IS_A_RESERVATION 0x00010000</td>
+<td>所述dwStackSize参数指定堆栈的初始保留大小。如果未指定此标志，则dwStackSize指定提交大小。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回值</strong></p>
+<p>函数执行成功，返回新建线程的线程句柄，lpStartAddress参数指定线程函数的地址，新建线程将从此地址开始执行。直到return语句返回，线程结束，把控制权交给操作系统。</p>
+<h2 id="线程回调函数ThreadProc">线程回调函数ThreadProc</h2>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/previous-versions/windows/desktop/legacy/ms686736(v=vs.85)">ThreadProc callback function</a></p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">DWORD WINAPI <span class="title">ThreadProc</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  _In_ LPVOID lpParameter</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>函数名自取，但是签名、参数要符合规约</p>
+<h2 id="SetThreadPriority">SetThreadPriority</h2>
+<p>Sets the priority value for the specified thread. This value, together with the priority class of the thread’s process, determines the thread’s base priority level.</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-setthreadpriority">SetThreadPriority function (processthreadsapi.h)</a></p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BOOL <span class="title">SetThreadPriority</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  [in] HANDLE hThread,</span></span></span><br><span class="line"><span class="params"><span class="function">  [in] <span class="keyword">int</span>    nPriority</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>nPriority参数列表：</p>
+<table>
+<thead>
+<tr>
+<th>优先级</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>THREAD_PRIORITY_IDLE</td>
+<td>空闲</td>
+</tr>
+<tr>
+<td>THREAD_PRIORITY_LOWEST</td>
+<td>最低</td>
+</tr>
+<tr>
+<td>THREAD_PRIORITY_BELOW_NORMAL</td>
+<td>低于正常</td>
+</tr>
+<tr>
+<td>THREAD_PRIORITY_NORMAL</td>
+<td>正常</td>
+</tr>
+<tr>
+<td>THREAD_PRIORITY_ABOVE_NORMAL</td>
+<td>高于正常</td>
+</tr>
+<tr>
+<td>THREAD_PRIORITY_HIGHEST</td>
+<td>最高</td>
+</tr>
+<tr>
+<td>THREAD_PRIORITY_TIME_CRITICAL</td>
+<td>实时</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ResumeThread">ResumeThread</h2>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-resumethread">ResumeThread function (processthreadsapi.h)</a></p>
+</blockquote>
+<p>Decrements a thread’s suspend count. When the suspend count is decremented to zero, the execution of the thread is resumed.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">DWORD <span class="title">ResumeThread</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  [in] HANDLE hThread</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>返回值：</p>
+<p>If the function succeeds, the return value is the thread’s previous suspend count.</p>
+<p>If the function fails, the return value is (DWORD) -1. To get extended error information, call <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/desktop/api/errhandlingapi/nf-errhandlingapi-getlasterror">GetLastError</a>.</p>
+<h2 id="WaitForSingleObject">WaitForSingleObject</h2>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/synchapi/nf-synchapi-waitforsingleobject">WaitForSingleObject function (synchapi.h)</a></p>
+</blockquote>
+<p>Waits until the specified object is in the signaled state or the time-out interval elapses.</p>
+<p>To enter an alertable wait state, use the <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/desktop/api/synchapi/nf-synchapi-waitforsingleobjectex">WaitForSingleObjectEx</a> function. To wait for multiple objects, use <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/desktop/api/synchapi/nf-synchapi-waitformultipleobjects">WaitForMultipleObjects</a>.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">DWORD <span class="title">WaitForSingleObject</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  [in] HANDLE hHandle,</span></span></span><br><span class="line"><span class="params"><span class="function">  [in] DWORD  dwMilliseconds</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
+<h2 id="WaitForMultipleObjects">WaitForMultipleObjects</h2>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/synchapi/nf-synchapi-waitformultipleobjects">WaitForMultipleObjects function (synchapi.h)</a></p>
+</blockquote>
+<p>Waits until <strong>one or all</strong> of the specified objects are in the signaled state or the time-out interval elapses.</p>
+<p>To enter an alertable wait state, use the <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/desktop/api/synchapi/nf-synchapi-waitformultipleobjectsex">WaitForMultipleObjectsEx</a> function.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">DWORD <span class="title">WaitForMultipleObjects</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  [in] DWORD        nCount,</span></span></span><br><span class="line"><span class="params"><span class="function">  [in] <span class="keyword">const</span> HANDLE *lpHandles,</span></span></span><br><span class="line"><span class="params"><span class="function">  [in] BOOL         bWaitAll,</span></span></span><br><span class="line"><span class="params"><span class="function">  [in] DWORD        dwMilliseconds</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
+<h2 id="beginthread">_beginthread</h2>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/beginthread-beginthreadex?view=msvc-160"><code>_beginthread</code>, <code>_beginthreadex</code></a></p>
+</blockquote>
+<p>A thread in an executable that calls the C run-time library (CRT) should use the <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/beginthread-beginthreadex">_beginthreadex</a> and <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/endthread-endthreadex">_endthreadex</a> functions for thread management rather than <strong>CreateThread</strong> and <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/desktop/api/processthreadsapi/nf-processthreadsapi-exitthread">ExitThread</a>; this requires the use of the multithreaded version of the CRT. If a thread created using <strong>CreateThread</strong> calls the CRT, the CRT may terminate the process in low-memory conditions.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">uintptr_t</span> _beginthread( <span class="comment">// NATIVE CODE</span></span><br><span class="line">   <span class="built_in"><span class="keyword">void</span></span>( __cdecl *start_address )( <span class="keyword">void</span> * ),</span><br><span class="line">   <span class="keyword">unsigned</span> stack_size,</span><br><span class="line">   <span class="keyword">void</span> *arglist</span><br><span class="line">);</span><br><span class="line"><span class="keyword">uintptr_t</span> _beginthread( <span class="comment">// MANAGED CODE</span></span><br><span class="line">   <span class="built_in"><span class="keyword">void</span></span>( __clrcall *start_address )( <span class="keyword">void</span> * ),</span><br><span class="line">   <span class="keyword">unsigned</span> stack_size,</span><br><span class="line">   <span class="keyword">void</span> *arglist</span><br><span class="line">);</span><br><span class="line"><span class="keyword">uintptr_t</span> _beginthreadex( <span class="comment">// NATIVE CODE</span></span><br><span class="line">   <span class="keyword">void</span> *security,</span><br><span class="line">   <span class="keyword">unsigned</span> stack_size,</span><br><span class="line">   <span class="built_in"><span class="keyword">unsigned</span></span> ( __stdcall *start_address )( <span class="keyword">void</span> * ),</span><br><span class="line">   <span class="keyword">void</span> *arglist,</span><br><span class="line">   <span class="keyword">unsigned</span> initflag,</span><br><span class="line">   <span class="keyword">unsigned</span> *thrdaddr</span><br><span class="line">);</span><br><span class="line"><span class="keyword">uintptr_t</span> _beginthreadex( <span class="comment">// MANAGED CODE</span></span><br><span class="line">   <span class="keyword">void</span> *security,</span><br><span class="line">   <span class="keyword">unsigned</span> stack_size,</span><br><span class="line">   <span class="built_in"><span class="keyword">unsigned</span></span> ( __clrcall *start_address )( <span class="keyword">void</span> * ),</span><br><span class="line">   <span class="keyword">void</span> *arglist,</span><br><span class="line">   <span class="keyword">unsigned</span> initflag,</span><br><span class="line">   <span class="keyword">unsigned</span> *thrdaddr</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h2 id="临界区锁">临界区锁</h2>
+<h3 id="Critical-Section-Objects">Critical Section Objects</h3>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/sync/critical-section-objects">Critical Section Objects</a></p>
+<p>扩展阅读：<a target="_blank" rel="noopener" href="http://blog.sina.com.cn/s/blog_7953cead0100osnt.html">对于CRITICAL_SECTION用法的介绍和理解</a></p>
+</blockquote>
+<h3 id="InitializeCriticalSection">InitializeCriticalSection</h3>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/synchapi/nf-synchapi-initializecriticalsection">InitializeCriticalSection function (synchapi.h)</a></p>
+</blockquote>
+<p>Initializes a critical section object.</p>
+<p>初始化一个临界区对象</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InitializeCriticalSection</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  [out] LPCRITICAL_SECTION lpCriticalSection</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
+<h3 id="EnterCriticalSection">EnterCriticalSection</h3>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/synchapi/nf-synchapi-entercriticalsection">EnterCriticalSection function (synchapi.h)</a></p>
+</blockquote>
+<p>Waits for ownership of the specified critical section object. The function returns when the calling thread is granted ownership.</p>
+<p>进入临界区</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">EnterCriticalSection</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  [in, out] LPCRITICAL_SECTION lpCriticalSection</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
+<h3 id="LeaveCriticalSection">LeaveCriticalSection</h3>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/synchapi/nf-synchapi-leavecriticalsection">LeaveCriticalSection function (synchapi.h)</a></p>
+</blockquote>
+<p>Releases ownership of the specified critical section object.</p>
+<p>离开临界区</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LeaveCriticalSection</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  [in, out] LPCRITICAL_SECTION lpCriticalSection</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
+<h3 id="DeleteCriticalSection">DeleteCriticalSection</h3>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/synchapi/nf-synchapi-deletecriticalsection">DeleteCriticalSection function (synchapi.h)</a></p>
+</blockquote>
+<p>Releases all resources used by an unowned critical section object.</p>
+<p>删除临界区对象资源</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DeleteCriticalSection</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  [in, out] LPCRITICAL_SECTION lpCriticalSection</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
+<h2 id="互锁函数">互锁函数</h2>
+<h3 id="InterlockedIncrement">InterlockedIncrement</h3>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/winnt/nf-winnt-interlockedincrement">InterlockedIncrement function (winnt.h)</a></p>
+</blockquote>
+<p>Increments (increases by one) the value of the specified 32-bit variable as an atomic operation.</p>
+<p>To operate on 64-bit values, use the <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/desktop/api/winnt/nf-winnt-interlockedincrement64">InterlockedIncrement64</a> function.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">LONG <span class="title">InterlockedIncrement</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  [in, out] LONG <span class="keyword">volatile</span> *Addend</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
+<h3 id="InterlockedDecrement">InterlockedDecrement</h3>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/winnt/nf-winnt-interlockeddecrement">InterlockedDecrement function (winnt.h)</a></p>
+</blockquote>
+<p>Decrements (decreases by one) the value of the specified 32-bit variable as an atomic operation.</p>
+<p>To operate on 64-bit values, use the <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/desktop/api/winnt/nf-winnt-interlockeddecrement64">InterlockedDecrement64</a> function.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">LONG <span class="title">InterlockedDecrement</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  [in, out] LONG <span class="keyword">volatile</span> *Addend</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
+<h3 id="InterlockedExchangeAdd">InterlockedExchangeAdd</h3>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/winnt/nf-winnt-interlockedexchangeadd">InterlockedExchangeAdd function (winnt.h)</a></p>
+</blockquote>
+<p>Performs an atomic addition of two 32-bit values.</p>
+<p>To operate on 64-bit values, use the <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/winnt/nf-winnt-interlockedexchangeadd64">InterlockedExchangeAdd64</a> function.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">LONG <span class="title">InterlockedExchangeAdd</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  [in, out] LONG <span class="keyword">volatile</span> *Addend,</span></span></span><br><span class="line"><span class="params"><span class="function">  [in]      LONG          Value</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
+<h3 id="InterlockedExchangePointer">InterlockedExchangePointer</h3>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/winnt/nf-winnt-interlockedexchangepointer">InterlockedExchangePointer function (winnt.h)</a></p>
+</blockquote>
+<p>Atomically exchanges a pair of addresses.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">PVOID <span class="title">InterlockedExchangePointer</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  [in, out] PVOID <span class="keyword">volatile</span> *Target,</span></span></span><br><span class="line"><span class="params"><span class="function">  [in]      PVOID          Value</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
+<h2 id="信号量同步">信号量同步</h2>
+<h3 id="CreateEvent">CreateEvent</h3>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/synchapi/nf-synchapi-createeventa">CreateEventA function (synchapi.h)</a></p>
+</blockquote>
+<p>Creates or opens a named or unnamed event object.</p>
+<p>To specify an access mask for the object, use the <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/desktop/api/synchapi/nf-synchapi-createeventexa">CreateEventEx</a> function.</p>
+<p>创建时间对象</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">HANDLE <span class="title">CreateEventA</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  [in, optional] LPSECURITY_ATTRIBUTES lpEventAttributes, <span class="comment">//定义事件对象的安全属性</span></span></span></span><br><span class="line"><span class="params"><span class="function">  [in]           BOOL                  bManualReset,      <span class="comment">//指定是否需要手工重置事件对象为受信状态</span></span></span></span><br><span class="line"><span class="params"><span class="function">  [in]           BOOL                  bInitialState,     <span class="comment">//指定事件对象创建时的初始状态</span></span></span></span><br><span class="line"><span class="params"><span class="function">  [in, optional] LPCSTR                lpName             <span class="comment">//事件对象的名称  </span></span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
+<h3 id="OpenEvent">OpenEvent</h3>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/synchapi/nf-synchapi-openeventa">OpenEventA function (synchapi.h)</a></p>
+</blockquote>
+<p>Opens an existing named event object.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">HANDLE <span class="title">OpenEventA</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  [in] DWORD  dwDesiredAccess,</span></span></span><br><span class="line"><span class="params"><span class="function">  [in] BOOL   bInheritHandle,</span></span></span><br><span class="line"><span class="params"><span class="function">  [in] LPCSTR lpName</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
+<h3 id="SetEvent">SetEvent</h3>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/synchapi/nf-synchapi-setevent">SetEvent function (synchapi.h)</a></p>
+</blockquote>
+<p>Sets the specified event object to the signaled state.</p>
+<p>设置具体的事件对象为受信状态</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BOOL <span class="title">SetEvent</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  [in] HANDLE hEvent</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
+<h3 id="ReSetEvent">ReSetEvent</h3>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/synchapi/nf-synchapi-resetevent">ResetEvent function (synchapi.h)</a></p>
+</blockquote>
+<p>Sets the specified event object to the nonsignaled state.</p>
+<p>设置具体的事件对象为未受信状态</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BOOL <span class="title">ResetEvent</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  [in] HANDLE hEvent</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
+<h1>内存</h1>
+<h2 id="ZeroMemory">ZeroMemory</h2>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/previous-versions/windows/desktop/legacy/aa366920(v=vs.85)">ZeroMemory macro</a></p>
+</blockquote>
+<p>Fills a block of memory with zeros.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ZeroMemory</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  [in] PVOID  Destination,</span></span></span><br><span class="line"><span class="params"><span class="function">  [in] SIZE_T Length</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
+<h2 id="ReadProcessMemory">ReadProcessMemory</h2>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-readprocessmemory">ReadProcessMemory function (memoryapi.h)</a></p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BOOL <span class="title">ReadProcessMemory</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  [in]  HANDLE  hProcess,</span></span></span><br><span class="line"><span class="params"><span class="function">  [in]  LPCVOID lpBaseAddress,</span></span></span><br><span class="line"><span class="params"><span class="function">  [out] LPVOID  lpBuffer,</span></span></span><br><span class="line"><span class="params"><span class="function">  [in]  SIZE_T  nSize,</span></span></span><br><span class="line"><span class="params"><span class="function">  [out] SIZE_T  *lpNumberOfBytesRead</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
+<h2 id="WriteProcessMemory">WriteProcessMemory</h2>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-writeprocessmemory">WriteProcessMemory function (memoryapi.h)</a></p>
+</blockquote>
+<p>Writes data to an area of memory in a specified process. The entire area to be written to must be accessible or the operation fails.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BOOL <span class="title">WriteProcessMemory</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  [in]  HANDLE  hProcess,</span></span></span><br><span class="line"><span class="params"><span class="function">  [in]  LPVOID  lpBaseAddress,</span></span></span><br><span class="line"><span class="params"><span class="function">  [in]  LPCVOID lpBuffer,</span></span></span><br><span class="line"><span class="params"><span class="function">  [in]  SIZE_T  nSize,</span></span></span><br><span class="line"><span class="params"><span class="function">  [out] SIZE_T  *lpNumberOfBytesWritten</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
+<h1>错误处理</h1>
+<h2 id="GetLastError">GetLastError</h2>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/errhandlingapi/nf-errhandlingapi-getlasterror">GetLastError function (errhandlingapi.h)</a></p>
+</blockquote>
+<p>Retrieves the calling thread’s last-error code value. The last-error code is maintained on a per-thread basis. Multiple threads do not overwrite each other’s last-error code.</p>
+<p><strong>Visual Basic:</strong> Applications should call <strong>err.LastDllError</strong> instead of <strong>GetLastError</strong>.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">_Post_equals_last_error_ DWORD <span class="title">GetLastError</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>WIN32 API档案速查</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="https://jyxyz.github.io/posts/57d48d90.html">https://jyxyz.github.io/posts/57d48d90.html</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a" style="display: inline-block;width: 120px"><h>博主✍</h><div class="post-copyright-cc-info"><h>阿耶</h></div></div><div class="post-copyright-c" style="display: inline-block;width: 120px"><h>本篇发布于📚</h><div class="post-copyright-cc-info"><h>2021-10-11</h></div></div><div class="post-copyright-u" style="display: inline-block;width: 120px"><h>本篇更新于🕝</h><div class="post-copyright-cc-info"><h>2021-10-11</h></div></div><div class="post-copyright-c" style="display: inline-block;width: 120px"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY 4.0" href="https://creativecommons.org/licenses/by/4.0/deed.zh">CC BY 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/WIN32-API/">WIN32 API</a></div><div class="post_share"><div class="social-share" data-image="/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq,qzone"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 要饭码</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/reward/wechat.png" target="_blank"><img class="post-qr-code-img" src="/img/reward/wechat.png" alt="wechat饿饿"/></a><div class="post-qr-code-desc">wechat饿饿</div></li><li class="reward-item"><a href="/img/reward/alipay.png" target="_blank"><img class="post-qr-code-img" src="/img/reward/alipay.png" alt="alipay饿饿"/></a><div class="post-qr-code-desc">alipay饿饿</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/6f49a03d.html"><img class="prev-cover" src="/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">编程开发工具</div></div></a></div><div class="next-post pull-right"><a href="/posts/e8553cf2.html"><img class="next-cover" src="/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">《Windows黑客编程技术详解》</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/4eb9716e.html" title="Windows程序设计"><img class="cover" src="/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-11-25</div><div class="title">Windows程序设计</div></div></a></div><div><a href="/posts/e8553cf2.html" title="《Windows黑客编程技术详解》"><img class="cover" src="/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-11</div><div class="title">《Windows黑客编程技术详解》</div></div></a></div><div><a href="/posts/97187543.html" title="windows程序设计实例"><img class="cover" src="/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-11</div><div class="title">windows程序设计实例</div></div></a></div><div><a href="/posts/7c96f25c.html" title="《Windows api开发详解》-源码学习"><img class="cover" src="/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-09-17</div><div class="title">《Windows api开发详解》-源码学习</div></div></a></div><div><a href="/posts/6a024e36.html" title="《windows程序设计5th（珍藏版）》-前四章笔记-小甲鱼"><img class="cover" src="/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-30</div><div class="title">《windows程序设计5th（珍藏版）》-前四章笔记-小甲鱼</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">进程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93STARTUPINFO"><span class="toc-number">1.1.</span> <span class="toc-text">结构体STARTUPINFO</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93PROCESS-INFORMATION"><span class="toc-number">1.2.</span> <span class="toc-text">结构体PROCESS_INFORMATION</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CreateProcess"><span class="toc-number">1.3.</span> <span class="toc-text">CreateProcess</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CloseHandle"><span class="toc-number">1.4.</span> <span class="toc-text">CloseHandle</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E7%85%A7%E9%81%8D%E5%8E%86"><span class="toc-number">1.5.</span> <span class="toc-text">快照遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CreateToolhelp32Snapshot"><span class="toc-number">1.5.1.</span> <span class="toc-text">CreateToolhelp32Snapshot</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%81%8D%E5%8E%86%E8%BF%9B%E7%A8%8B"><span class="toc-number">1.5.2.</span> <span class="toc-text">遍历进程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93PROCESSENTRY32"><span class="toc-number">1.5.2.1.</span> <span class="toc-text">结构体PROCESSENTRY32</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Process32First"><span class="toc-number">1.5.2.2.</span> <span class="toc-text">Process32First</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Process32Next"><span class="toc-number">1.5.2.3.</span> <span class="toc-text">Process32Next</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%81%8D%E5%8E%86%E8%BF%9B%E7%A8%8B%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A8%A1%E5%9D%97"><span class="toc-number">1.5.3.</span> <span class="toc-text">遍历进程使用的模块</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93MODULEENTRY32"><span class="toc-number">1.5.3.1.</span> <span class="toc-text">结构体MODULEENTRY32</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Module32First"><span class="toc-number">1.5.3.2.</span> <span class="toc-text">Module32First</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Module32Next"><span class="toc-number">1.5.3.3.</span> <span class="toc-text">Module32Next</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ExitProcess"><span class="toc-number">1.6.</span> <span class="toc-text">ExitProcess</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OpenProcess"><span class="toc-number">1.7.</span> <span class="toc-text">OpenProcess</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TerminateProcess"><span class="toc-number">1.8.</span> <span class="toc-text">TerminateProcess</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CreateMutex"><span class="toc-number">1.9.</span> <span class="toc-text">CreateMutex</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">线程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93SECURITY-ATTRIBUTES"><span class="toc-number">2.1.</span> <span class="toc-text">结构体SECURITY_ATTRIBUTES</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CreateThread"><span class="toc-number">2.2.</span> <span class="toc-text">CreateThread</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0ThreadProc"><span class="toc-number">2.3.</span> <span class="toc-text">线程回调函数ThreadProc</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SetThreadPriority"><span class="toc-number">2.4.</span> <span class="toc-text">SetThreadPriority</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ResumeThread"><span class="toc-number">2.5.</span> <span class="toc-text">ResumeThread</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WaitForSingleObject"><span class="toc-number">2.6.</span> <span class="toc-text">WaitForSingleObject</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WaitForMultipleObjects"><span class="toc-number">2.7.</span> <span class="toc-text">WaitForMultipleObjects</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#beginthread"><span class="toc-number">2.8.</span> <span class="toc-text">_beginthread</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%B4%E7%95%8C%E5%8C%BA%E9%94%81"><span class="toc-number">2.9.</span> <span class="toc-text">临界区锁</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Critical-Section-Objects"><span class="toc-number">2.9.1.</span> <span class="toc-text">Critical Section Objects</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#InitializeCriticalSection"><span class="toc-number">2.9.2.</span> <span class="toc-text">InitializeCriticalSection</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EnterCriticalSection"><span class="toc-number">2.9.3.</span> <span class="toc-text">EnterCriticalSection</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LeaveCriticalSection"><span class="toc-number">2.9.4.</span> <span class="toc-text">LeaveCriticalSection</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DeleteCriticalSection"><span class="toc-number">2.9.5.</span> <span class="toc-text">DeleteCriticalSection</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%92%E9%94%81%E5%87%BD%E6%95%B0"><span class="toc-number">2.10.</span> <span class="toc-text">互锁函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#InterlockedIncrement"><span class="toc-number">2.10.1.</span> <span class="toc-text">InterlockedIncrement</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#InterlockedDecrement"><span class="toc-number">2.10.2.</span> <span class="toc-text">InterlockedDecrement</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#InterlockedExchangeAdd"><span class="toc-number">2.10.3.</span> <span class="toc-text">InterlockedExchangeAdd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#InterlockedExchangePointer"><span class="toc-number">2.10.4.</span> <span class="toc-text">InterlockedExchangePointer</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%90%8C%E6%AD%A5"><span class="toc-number">2.11.</span> <span class="toc-text">信号量同步</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CreateEvent"><span class="toc-number">2.11.1.</span> <span class="toc-text">CreateEvent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OpenEvent"><span class="toc-number">2.11.2.</span> <span class="toc-text">OpenEvent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SetEvent"><span class="toc-number">2.11.3.</span> <span class="toc-text">SetEvent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ReSetEvent"><span class="toc-number">2.11.4.</span> <span class="toc-text">ReSetEvent</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">内存</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ZeroMemory"><span class="toc-number">3.1.</span> <span class="toc-text">ZeroMemory</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ReadProcessMemory"><span class="toc-number">3.2.</span> <span class="toc-text">ReadProcessMemory</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WriteProcessMemory"><span class="toc-number">3.3.</span> <span class="toc-text">WriteProcessMemory</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">错误处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#GetLastError"><span class="toc-number">4.1.</span> <span class="toc-text">GetLastError</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">本地搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'acloudenv-3gdr1re432b1f469',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.vemoji)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    twikoo.getCommentsCount({
+      envId: 'acloudenv-3gdr1re432b1f469',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      document.getElementById('twikoo-count').innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>
